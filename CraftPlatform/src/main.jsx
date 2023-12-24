@@ -4,6 +4,7 @@ import { createBrowserRouter , RouterProvider } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Error from './pages/Error'
+import ShopPage from './pages/Shop/index.jsx' 
 import Review from './pages/product/review'
 import Product from './pages/product'
 import Order from './pages/Order'
@@ -52,7 +53,10 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login/>
   },
-
+  {
+    path : '/Shop' ,
+    element:<ShopPage SID={1} IsSeller={1}/>,
+  }
 ])
 
 
