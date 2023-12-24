@@ -36,7 +36,7 @@ function ShopCustomerView(props)
                 </div>
                 <button className={style.Buttons}>EditBanner &#x1F4F7;</button>
             </div>
-                <button1 className={style.EditPhoto}>&#x1F4F7;</button1>
+                <button className={style.EditPhoto}>&#x1F4F7;</button>
             </>
     }
 
@@ -84,7 +84,7 @@ function ShopSellerView()
     </div>
 }
 
-function ShopPage(props)
+function Shop(props)
 {
     if(props.IsSeller)
     {
@@ -97,4 +97,4 @@ function ShopPage(props)
     return <ShopCustomerView SID={props.SID}/>
 
 }
-export default ShopPage;
+export default Shop;
