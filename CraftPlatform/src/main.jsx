@@ -8,7 +8,10 @@ import Review from './pages/product/review'
 import Product from './pages/product'
 import Order from './pages/Order'
 import Navbar from './components/Navbar'
-import AccountSettings from './pages/AccountSettings.jsx'
+import AccountSettings from './pages/AccountSettings/index.jsx'
+import ShopSettings from './pages/ShopSettings/index.jsx'
+import SignUp from './pages/Signup/index.jsx'
+import Login from './pages/Login/index.jsx'
 
 
 const router = createBrowserRouter([
@@ -36,7 +39,19 @@ const router = createBrowserRouter([
   {
     path: '/accountSettings',
     element: <AccountSettings/>
-  }
+  },
+  {
+    path: '/shopSettings',
+    element: <ShopSettings/>
+  },
+  {
+    path: '/signup',
+    element: <SignUp/>
+  },
+  {
+    path: '/login',
+    element: <Login/>
+  },
 
 ])
 

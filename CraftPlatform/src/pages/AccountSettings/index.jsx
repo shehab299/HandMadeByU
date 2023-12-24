@@ -6,6 +6,7 @@ function AccountSettings(params) {
         <div>
             <Navbar />
             <div className={styles.inputs}>
+                <h2>Account Settings</h2>
                 <div className={styles.nameFields}>
                     <label>Name</label>
                     <input type='text' name='firstName'/>
@@ -28,6 +29,13 @@ function AccountSettings(params) {
                     <label>Change username</label>
                     <input type='text' name='username'/>
                 </div>
+
+                <div className={styles.btns}>
+                    <button className='lightBtn'>Save</button>
+                    <button className='lightBtn'>Sign Out</button>
+                    <button className='lightBtn'>Delete account</button>
+                </div>
+
             </div>
 
 

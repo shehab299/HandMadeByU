@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    background-color:hsla(0,0%,100%,1);
+    background-image:
+    radial-gradient(at 50% 50%, hsla(227,100%,50%,0.31) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(224,61%,78%,1) 0px, transparent 50%),
+    radial-gradient(at 93% 88%, hsla(184,66%,78%,1) 0px, transparent 50%),
+    radial-gradient(at 10% 88%, hsla(192,16%,93%,1) 0px, transparent 50%),
+    radial-gradient(at 63% 32%, hsla(190,30%,89%,1) 0px, transparent 50%),
+    radial-gradient(at 30% 11%, hsla(197,61%,74%,1) 0px, transparent 50%);
+}
+
+.form {
+    padding: 50px 80px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: saturate(100%) blur(10px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 50px;
+
+    background: var(--sign-in-up, rgba(255, 252, 252, 0.62));
+    box-shadow: 0px 4px 35px 0px rgba(0, 0, 0, 0.25);
+}
+
+.form input {
+    border: none;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 10px;
+
+    background: #FFF;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.form button {
+    color: white;
+    background-color: black;
+
+    padding: 10px 60px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: transform 0.2s;
+}
+
+.form button:hover {
+    transform: scale(1.05);
+}
+
+.form input:focus {
+    border-bottom: #3292b3bd solid 1px;
+}
+
+.login, .signUp {
+    color: #2B0CED;
+}
+
+

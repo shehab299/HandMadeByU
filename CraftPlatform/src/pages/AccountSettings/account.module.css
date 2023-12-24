@@ -27,9 +27,16 @@
 
 .nameFields {
     display: flex;
-    
+
 }
 
 .inputs input:focus{
     outline: none;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row !important;
+    gap: 20px !important;
+    margin: 2rem 0;
 }
