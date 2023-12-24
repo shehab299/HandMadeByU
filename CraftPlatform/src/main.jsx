@@ -4,6 +4,7 @@ import { createBrowserRouter , RouterProvider } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Error from './pages/Error'
+import ShopPage from './pages/ShopPage' 
 
 
 
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     element: <Home/>,
     errorElement: <Error/>
   },
+  {
+    path : '/Shop' ,
+    element:<ShopPage SID={1} IsSeller={1}/>,
+  }
 ])
 
 
