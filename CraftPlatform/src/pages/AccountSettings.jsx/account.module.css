@@ -1,0 +1,35 @@
+.inputs{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputs div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.inputs div label {
+    font-size: 0.8rem;
+    opacity: 50%;
+}
+
+.inputs input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #355d6f85;
+    box-shadow: 0px 2px 4px 0px #355d6f1a;
+}
+
+.nameFields {
+    display: flex;
+    
+}
+
+.inputs input:focus{
+    outline: none;
+}
