@@ -13,7 +13,7 @@ import AccountSettings from './pages/AccountSettings/index.jsx'
 import ShopSettings from './pages/ShopSettings/index.jsx'
 import SignUp from './pages/Signup/index.jsx'
 import Login from './pages/Login/index.jsx'
-
+import SellerSignUp from './pages/sellerSignup/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -54,9 +54,13 @@ const router = createBrowserRouter([
     element: <Login/>
   },
   {
-    path : '/Shop' ,
+    path : '/Shop',
     element:<ShopPage SID={1} IsSeller={1}/>,
-  }
+  },
+  {
+    path : '/sellerSignUp',
+    element:<SellerSignUp/>,
+  },
 ])
 
 
