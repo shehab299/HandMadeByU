@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import style from "./Cart.module.css"
 import Carts from "./Carts.json"
+
 function Cart(props){
     const thisCart=Carts.find(cart=>cart.CID==props.CID);
     console.log(thisCart);
@@ -30,24 +31,23 @@ function Cart(props){
                     <h2>{products[0].Shop_Name}</h2>
                     </div>
                     <div className={style.ShopItems}>
-                        {
-                            products.map(product=>{                     
-                                return <div key={product.PID} className={style.ProductInfo}>
-                                     {/* display this Shop products */}
-                                    <img src={product.image_URL} className={style.ProductImg}/>
-                                    <div>
-                                        <h3>{product.Name}</h3>
-                                        <h3>{product.PDescription}</h3>
-                                        <div className={style.row}>
-                                            <h3>Quantity:</h3>
-                                            <h3>{product.Quantity}</h3>
-                                        </div>
-                                    </div>
-                                    <div className={style.PriceRemove}>
-                                        <h3>{product.Price} $</h3>
-                                        <button className={style.RemoveButton}>Remove</button>
-                                    </div>
+                        {    
+                        products.map(product=>{                     
+                        return <div key={product.PID} className={style.ProductInfo}>
+                            <img src={product.image_URL} className={style.ProductImg}/>
+                            <div>
+                                <p>{product.Name}</p>
+                                <p>{product.PDescription}</p>
+                                <div className={style.row}>
+                                    <p>Quantity:</p>
+                                    <p>{product.Quantity}</p>
                                 </div>
+                            </div>
+                            <div className={style.PriceRemove}>
+                                <p>{product.Price} $</p>
+                                <button className={style.RemoveButton}>Remove</button>
+                            </div>
+                        </div>
                         })}
                     </div>
                     </div>
@@ -56,12 +56,12 @@ function Cart(props){
 
         <div className={style.Total}>
         <div className={style.row}>
-            <h2>Total Price: </h2>
-            <h2> {thisCart.TotalPrice} $</h2>
+            <p>Total Price: </p>
+            <p> {thisCart.TotalPrice} $</p>
         </div>
         <div className={style.row}>
-            <h2>Total Quantity: </h2>
-            <h2>{thisCart.TotalQuantity}</h2>
+            <p>Total Quantity: </p>
+            <p>{thisCart.TotalQuantity}</p>
         </div>
         <button className={style.PurchaseButton}><h2>Proceed To Purchase</h2></button>
         </div>
