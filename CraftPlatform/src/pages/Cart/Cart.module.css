@@ -1,0 +1,101 @@
+.Container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.Total{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+.row{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ShopContainer{
+    padding: 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    flex-shrink: 0;
+    border-radius: 43px;
+    background: #FFF;
+    min-width:50%;
+    box-shadow: -1px 4px 25px 0px rgba(0, 0, 0, 0.25);
+}
+.ShopInfo{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-start;
+}
+
+.Logo
+{
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 80px;
+}
+
+.ShopItems
+{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+
+.ProductInfo
+{
+    margin:20px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ProductImg
+{
+    width: 141px;
+    height: 116px;
+    flex-shrink: 0;
+    border-radius: 21px;
+}
+
+.CartItems{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.PurchaseButton{
+    color:#FFF;
+    width: 389px;
+    height: 73px;
+    border-radius: 30px;
+    background: #000;
+}
+
+.RemoveButton{
+    color:#FFF;
+    width: 100px;
+    height: 37px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #000;
+}
+
+.PriceRemove{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-end;
+}
+
+h3{
+    margin:10px;
+}

@@ -14,7 +14,7 @@
           "PDescription": "Description of Product 1",
           "Price": 9.99,
           "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
-          "catagery":"cat1"
+          "catagery":"category1"
         },
         {
           "PID": 23456,
@@ -22,7 +22,7 @@
           "PDescription": "Description of Product 2",
           "Price": 14.99,
           "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
-          "catagery":"cat2"
+          "catagery":"category2"
         },
         {
           "PID": 34567,
@@ -30,9 +30,10 @@
           "PDescription": "Description of Product 3",
           "Price": 10.00,
           "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
-          "catagery":"cat3"
+          "catagery":"category3"
         }
-      ]
+      ],
+      "Categories":["Category1","Category2","Category3"]
     },
     {
       "SID": 2,

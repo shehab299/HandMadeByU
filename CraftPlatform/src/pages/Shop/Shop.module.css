@@ -88,7 +88,7 @@ justify-content:space-between;
 .SellerOptions
 {
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
     justify-content:space-between;
     align-items: center;
 }
@@ -103,6 +103,6 @@ justify-content:space-between;
     border-radius: 50px;
     background-color: #FFF;
     position: absolute;
-    top:400px;
+    top:350px;
     left:300px;
 }

@@ -14,6 +14,8 @@ import ShopSettings from './pages/ShopSettings/index.jsx'
 import SignUp from './pages/Signup/index.jsx'
 import Login from './pages/Login/index.jsx'
 import SellerSignUp from './pages/sellerSignup/index.jsx'
+import Shop from './pages/Shop' 
+import Cart from './pages/Cart'   
 
 const router = createBrowserRouter([
   {
@@ -55,7 +57,11 @@ const router = createBrowserRouter([
   },
   {
     path : '/Shop',
-    element:<ShopPage SID={1} IsSeller={1}/>,
+    element:<Shop SID={1} IsSeller={1}/>,
+  },
+  {
+    path : '/Cart' ,
+    element:<Cart CID={1234}/>,
   },
   {
     path : '/sellerSignUp',

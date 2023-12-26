@@ -1,0 +1,85 @@
+[
+    {
+        "CID":1234,
+        "TotalQuantity":3,
+        "TotalPrice":190,
+        "Products":
+        [
+            {
+            "SID":1,
+            "Shop_Name":"Shop1",
+            "logo_URL": "https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+            "PID": 1234,
+            "Name": "Product 1",
+            "PDescription": "Description of Product 1",
+            "Price": 9.99,
+            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "Quantity":1
+            },
+            {
+            "SID":2,
+            "Shop_Name":"Shop2",
+            "logo_URL": "https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+            "PID": 2345,
+            "Name": "Product 2",
+            "PDescription": "Description of Product 2",
+            "Price": 14.99,
+            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "Quantity":1
+            },
+            {
+            "SID":1,
+            "Shop_Name":"Shop1",
+            "logo_URL": "https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+            "PID": 3456,
+            "Name": "Product 3",
+            "PDescription": "Description of Product 3",
+            "Price": 10.00,
+            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "Quantity":1
+            }
+        ]
+    },
+    {
+        "CID":5678,
+        "TotalQuantity":3,
+        "TotalPrice":190,
+        "Products":
+        [
+            {
+            "SID":1,
+            "Shop_Name":"Shop1",
+            "Simg_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "PID": 12345,
+            "Name": "Product 1",
+            "PDescription": "Description of Product 1",
+            "Price": 9.99,
+            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "Quantity":1
+            },
+            {
+            "SID":2,
+            "Shop_Name":"Shop2",
+            "Simg_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "PID": 23456,
+            "Name": "Product 2",
+            "PDescription": "Description of Product 2",
+            "Price": 14.99,
+            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "Quantity":1
+            },
+            {
+            "SID":1,
+            "Shop_Name":"Shop1",
+            "Simg_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "PID": 34567,
+            "Name": "Product 3",
+            "PDescription": "Description of Product 3",
+            "Price": 10.00,
+            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+            "Quantity":1
+            }
+        ]
+
+    }
+]
