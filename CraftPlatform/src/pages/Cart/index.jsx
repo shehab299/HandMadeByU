@@ -1,29 +1,59 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import style from "./Cart.module.css"
-import Carts from "./Carts.json"
+import Navbar from "../../components/Navbar";
+import CartData from "./Cart.json"
+import { useState } from "react";   
 
-function Cart(props){
-    const thisCart=Carts.find(cart=>cart.CID==props.CID);
-    console.log(thisCart);
+function Cart(){
+    let productsInCart=CartData.Products;
+    let totalPrice = 0;
+    let shopsInCart=productsInCart.map(product=>product.SID)
+    shopsInCart= [...new Set(shopsInCart)];
+    let totalQuantity=0;
 
-    const productsInCart= thisCart.Products;
-    console.log(productsInCart);
+    productsInCart.map((prod)=>{
+        totalQuantity++
+        totalPrice+=prod.Price
+    })
 
-    let ShopsInCart=productsInCart.map(product=>product.SID)
-    ShopsInCart= [...new Set(ShopsInCart)];
-    console.log(ShopsInCart);
+    const [TotalPrice,setTotalPrice]=useState(totalPrice);
+    const [TotalQuantity,setTotalQuantity]=useState(totalQuantity);
+    const [ProductsInCart,setProductsInCart]=useState(productsInCart);
+    const [ShopsInCart,setShopsInCart]=useState(shopsInCart);
 
+    function handleRemoveClick(TotalPrice, price, PID) {
+        TotalPrice-= price;
+        setTotalPrice(TotalPrice);
+        setTotalQuantity(TotalQuantity-1);
+        productsInCart=ProductsInCart.filter((product)=>{return product.PID!=PID})
+        setProductsInCart(productsInCart)
+        shopsInCart=productsInCart.map(product=>product.SID)
+        shopsInCart= [...new Set(shopsInCart)];
+        console.log(shopsInCart);
+        setShopsInCart(shopsInCart)
+    }
 
-    return <div className={style.Container}>
+    function handlePurchaseClick(){
+        console.log("Purchase Clicked")
+        setTotalPrice(0);
+        setTotalQuantity(0);
+        setProductsInCart([]);
+        setShopsInCart([]);
+    }
+
+    return <>
+    <Navbar/>
+    <div className={style.Container}>
         <div className={style.CartItems}>
             {
                 ShopsInCart.map((shop)=>{                                   
-                    let products=productsInCart.filter(product=>{
+                    let products=ProductsInCart.filter(product=>{
                         if(product.SID==shop)
                         return product
                     });
-
-                    console.log(products);                           
+                          
                     return <div key={shop}  className={style.ShopContainer}>  
                     {/* display Shop data   */}
                     <div className={style.ShopInfo}>
@@ -45,7 +75,7 @@ function Cart(props){
                             </div>
                             <div className={style.PriceRemove}>
                                 <p>{product.Price} $</p>
-                                <button className={style.RemoveButton}>Remove</button>
+                                <button className={style.RemoveButton} onClick={() => {handleRemoveClick(TotalPrice,product.Price,product.PID)}}>Remove</button>
                             </div>
                         </div>
                         })}
@@ -57,14 +87,15 @@ function Cart(props){
         <div className={style.Total}>
         <div className={style.row}>
             <p>Total Price: </p>
-            <p> {thisCart.TotalPrice} $</p>
+            <p> {TotalPrice} $</p>
         </div>
         <div className={style.row}>
             <p>Total Quantity: </p>
-            <p>{thisCart.TotalQuantity}</p>
+            <p>{TotalQuantity}</p>
         </div>
-        <button className={style.PurchaseButton}><h2>Proceed To Purchase</h2></button>
+        <button className={style.PurchaseButton} onClick={()=> {handlePurchaseClick()}}>Proceed To Purchase</button>
         </div>
     </div>
+    </>
 }
 export default Cart;

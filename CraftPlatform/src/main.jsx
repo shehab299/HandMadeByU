@@ -4,7 +4,6 @@ import { createBrowserRouter , RouterProvider } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Error from './pages/Error'
-import ShopPage from './pages/Shop/index.jsx' 
 import Review from './pages/product/review'
 import Product from './pages/product'
 import Order from './pages/Order'
@@ -16,6 +15,9 @@ import Login from './pages/Login/index.jsx'
 import SellerSignUp from './pages/sellerSignup/index.jsx'
 import Shop from './pages/Shop' 
 import Cart from './pages/Cart'   
+import Compitetion from './pages/Competition/index.jsx'
+import ConfirmOrder from './pages/ConfirmOrder/index.jsx'
+import AddAddress from './pages/AddAddress/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -57,11 +59,23 @@ const router = createBrowserRouter([
   },
   {
     path : '/Shop',
-    element:<Shop SID={1} IsSeller={1}/>,
+    element:<Shop IsSeller={0}/>,
   },
   {
     path : '/Cart' ,
-    element:<Cart CID={1234}/>,
+    element:<Cart/>,
+  },
+  {
+    path : '/Competition' ,
+    element:<Compitetion/>,
+  },
+  {
+    path : '/ConfirmOrder' ,
+    element:<ConfirmOrder/>,
+  },
+  {
+    path : '/AddAddress' ,
+    element:<AddAddress/>,
   },
   {
     path : '/sellerSignUp',
