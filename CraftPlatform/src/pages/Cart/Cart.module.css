@@ -19,6 +19,7 @@
 
 .ShopContainer{
     padding: 50px;
+    margin:20px;
     display:flex;
     flex-direction:column;
     justify-content:space-around;

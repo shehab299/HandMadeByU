@@ -1,0 +1,22 @@
+{
+    "Title":"Title1",
+    "ID":1,
+    "Description":"decsription1",
+    "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+    "Shop_Name":"Shop1",
+    "EndTime":"1/1/2023",
+    "Participant":[
+        {
+            "CustomerName":"Customer1",
+            "CID":"1234"
+        },
+        {
+            "CustomerName":"Customer2",
+            "CID":"2345"
+        },
+        {
+            "CustomerName":"Customer3",
+            "CID":"3456"
+        }
+    ]
+}

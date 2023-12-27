@@ -2,10 +2,10 @@
 .Container  
 {
     margin-top:50px;
-    margin-right:50px;
     margin-bottom: 50px;
     display: grid;
-    grid-template-columns:24% 76%;
+    grid-template-columns:24% 66%;
+    gap:5%;
     padding: 10px;
 }
 
@@ -15,7 +15,7 @@ flex-direction: row;
 justify-content: space-between;
 align-items: flex-start;
 position:absolute;
-top:156px;
+top:206px;
 left:55px;
 }
 
@@ -33,34 +33,6 @@ left:55px;
     width : 100%;
     height: 348px;
     filter: blur(5px);
-}
-
-.ShopProducts{
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:10%;
-    padding: 10px;
-}
-
-.Product
-{
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-}
-
-.ProductInfo{
-display: flex;
-flex-direction:row;
-justify-content:space-between;
-}
-
-.ProductImage{
-    width: 100%;
-    height: 374px;
-    flex-shrink: 0;
-    border-radius: 25px;
 }
 
 .Buttons{
@@ -103,6 +75,6 @@ justify-content:space-between;
     border-radius: 50px;
     background-color: #FFF;
     position: absolute;
-    top:350px;
-    left:300px;
+    top:200px;
+    left:250px;
 }

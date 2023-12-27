@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Error from './pages/Error'
 import Shop from './pages/Shop/index.jsx' 
 import Review from './components/Review.jsx'
+import Review from './pages/product/review'
 import Product from './pages/product'
 import Order from './pages/Order'
 import Navbar from './components/Navbar'
@@ -17,6 +18,9 @@ import SellerSignUp from './pages/CreateShop/index.jsx'
 import Cart from './pages/Cart' 
 import AddCompetition from './pages/AddCompetition/index.jsx'  
 import AddProduct from './pages/AddProduct/index.jsx'
+import Compitetion from './pages/Competition/index.jsx'
+import ConfirmOrder from './pages/ConfirmOrder/index.jsx'
+import AddAddress from './pages/AddAddress/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -58,14 +62,14 @@ const router = createBrowserRouter([
   },
   {
     path : '/Shop',
-    element:<Shop SID={1} IsSeller={1}/>,
+    element:<Shop IsSeller={0}/>,
   },
   {
     path : '/Cart' ,
     element:<Cart CID={1234}/>,
   },
   {
-    path : '/CreateShop',
+    path : '/sellerSignUp',
     element:<SellerSignUp/>,
   },
   {
