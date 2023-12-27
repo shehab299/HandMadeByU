@@ -1,12 +1,12 @@
 import productsData from "./ProductInOrder.json";
-import ProductInOrder from "./ProductInOrder";
+import ProductInOrder from "../../components/ProductInOrder";
 import styles from './order.module.css'
 import Navbar from "../../components/Navbar";
 
 function Order() {
     return (
         <div className={styles.container}>
-        <Navbar />
+        <Navbar createShop={false}/>
         <div className={styles.orderContainer}>
               <div>
                 {productsData.map((productObj ,index) => (

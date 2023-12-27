@@ -1,4 +1,4 @@
-import styles from './order.module.css'
+import styles from '../pages/Order/order.module.css'
 
 function ProductInOrder(props) {
     return (

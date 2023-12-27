@@ -9,13 +9,6 @@ function SignUp() {
     const [name , setName] = useState('');
     const [password , setPassword] = useState('');
     const [confirmPassword , setConfirmPassword] = useState('');
-    
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        await signUp(email , password);
-
-    }
 
     return (
         <div className={styles.container}>

@@ -5,15 +5,20 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faStore } from '@fortawesome/free-solid-svg-icons';
 
 // styles
 import styles from './navbar.module.css'
 
+//
+import { Link } from 'react-router-dom';
 
-function Navbar() {
+
+function Navbar(props) {
+    const {createdShop} = props;
     return (
         <div className={styles.container}>
-            <h1>LOGO</h1>
+            <Link to={'/'}><h1>LOGO</h1></Link>
             <div className={styles.categories}>
                 <FontAwesomeIcon icon={faBars} style={{color: "#000000",}} />
                 <p>Categories</p>
@@ -23,8 +28,9 @@ function Navbar() {
             </div>
             <div className={styles.icons}>
                 <FontAwesomeIcon icon={faHeart} />
-                <FontAwesomeIcon icon={faCartShopping} style={{color: "#000000",}} />
-                <FontAwesomeIcon icon={faUser} />
+                <Link to={'/cart'}><FontAwesomeIcon icon={faCartShopping} style={{color: "#000000",}} /></Link>
+                <Link to={'/AccountSettings'}><FontAwesomeIcon icon={faUser} /></Link>
+                {createdShop ? <Link to='/Shop'><FontAwesomeIcon icon={faStore} /></Link> : <Link to='/CreateShop'><FontAwesomeIcon icon={faStore} /></Link>}
                 <FontAwesomeIcon icon={faBell} />
             </div>
         </div>

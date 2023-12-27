@@ -4,7 +4,7 @@ import styles from "./account.module.css"
 function AccountSettings(params) {
     return(
         <div>
-            <Navbar />
+            <Navbar  createShop={false}/>
             <div className={styles.inputs}>
                 <h2>Account Settings</h2>
                 <div className={styles.nameFields}>

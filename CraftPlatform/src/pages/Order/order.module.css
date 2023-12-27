@@ -5,6 +5,8 @@
 .orderContainer {
     display: flex;
     justify-content: space-around;
+    margin: 2rem auto;
+
 }
 
 .productContainer {
@@ -20,7 +22,7 @@
 .orderInfo {
     height: fit-content;
     border: solid rgba(0, 0, 0, 0.329) 1px;
-    padding: 30px;
+    padding: 10px 50px;
    
     width: 20%;
     border-radius: 20px;

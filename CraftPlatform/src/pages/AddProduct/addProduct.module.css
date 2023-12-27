@@ -1,3 +1,19 @@
+.imgContainer {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 20px;
+    width: 40%;   
+    height: fit-content;
+}
+
+.productImg {
+    vertical-align: middle;
+    width: 100%;
+
+    border-radius: 20px;
+}
+
 .container {
     display: flex;
     align-items: center;

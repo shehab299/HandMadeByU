@@ -4,8 +4,8 @@ import { createBrowserRouter , RouterProvider } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Error from './pages/Error'
-import ShopPage from './pages/Shop/index.jsx' 
-import Review from './pages/product/review'
+import Shop from './pages/Shop/index.jsx' 
+import Review from './components/Review.jsx'
 import Product from './pages/product'
 import Order from './pages/Order'
 import Navbar from './components/Navbar'
@@ -13,9 +13,10 @@ import AccountSettings from './pages/AccountSettings/index.jsx'
 import ShopSettings from './pages/ShopSettings/index.jsx'
 import SignUp from './pages/Signup/index.jsx'
 import Login from './pages/Login/index.jsx'
-import SellerSignUp from './pages/sellerSignup/index.jsx'
-import Shop from './pages/Shop' 
-import Cart from './pages/Cart'   
+import SellerSignUp from './pages/CreateShop/index.jsx'
+import Cart from './pages/Cart' 
+import AddCompetition from './pages/AddCompetition/index.jsx'  
+import AddProduct from './pages/AddProduct/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,11 +25,11 @@ const router = createBrowserRouter([
     errorElement: <Error/>
   },
   {
-    path: '/review',
+    path: '/Review',
     element: <Review/>
   },
   {
-    path: '/product',
+    path: '/Product',
     element: <Product/>
   },
   {
@@ -36,23 +37,23 @@ const router = createBrowserRouter([
     element: <Order/>
   },
   {
-    path: '/navbar',
+    path: '/Navbar',
     element: <Navbar/>
   },
   {
-    path: '/accountSettings',
+    path: '/AccountSettings',
     element: <AccountSettings/>
   },
   {
-    path: '/shopSettings',
+    path: '/ShopSettings',
     element: <ShopSettings/>
   },
   {
-    path: '/signup',
+    path: '/Signup',
     element: <SignUp/>
   },
   {
-    path: '/login',
+    path: '/Login',
     element: <Login/>
   },
   {
@@ -64,8 +65,16 @@ const router = createBrowserRouter([
     element:<Cart CID={1234}/>,
   },
   {
-    path : '/sellerSignUp',
+    path : '/CreateShop',
     element:<SellerSignUp/>,
+  },
+  {
+    path : '/AddComptetion',
+    element:<AddCompetition/>,
+  },
+  {
+    path : '/AddProduct',
+    element:<AddProduct/>,
   },
 ])
 

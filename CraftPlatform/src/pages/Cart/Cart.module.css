@@ -2,6 +2,8 @@
     display:flex;
     flex-direction: row;
     justify-content: space-around;
+
+    margin: 3rem auto;
 }
 .Total{
     display:flex;
@@ -24,7 +26,7 @@
     border-radius: 43px;
     background: #FFF;
     min-width:50%;
-    box-shadow: -1px 4px 25px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -1px 4px 10px 0px rgba(0, 0, 0, 0.25);
 }
 .ShopInfo{
     display:flex;
@@ -70,23 +72,27 @@
     flex-direction: column;
     justify-content:space-around;
     align-items: center;
+
+    gap: 2rem;
 }
 
 .PurchaseButton{
     color:#FFF;
-    width: 389px;
-    height: 73px;
-    border-radius: 30px;
+    padding: 5px 35px;
+    border-radius: 20px;
     background: #000;
+
+    border: none;
 }
 
 .RemoveButton{
     color:#FFF;
-    width: 100px;
-    height: 37px;
+    padding: 10px 35px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #000;
+
+    border: none;
 }
 
 .PriceRemove{
