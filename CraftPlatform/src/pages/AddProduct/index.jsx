@@ -1,24 +1,35 @@
-//components
-import { useState } from "react"
-import Navbar from "../../components/Navbar"
+//conmponents
+import Navbar from "../../components/Navbar";
 
-//style
-import styles from './addProduct.module.css'
+//styles
+import styles from "../ShopSettings/shopSettings.module.css"
 
-export default function AddProduct() {
+//react
+import { useState } from "react";
+
+function AddProduct(params) {
     const [productName, setProductName] = useState('')
     const [description, setDescription] = useState('')
     const [availableQuantity, setAvailableQuantity] = useState('')
     const [keywords, setKeywords] = useState('')
     const [productUrl, setProductUrl] = useState('')
+
+    function handleCancel() {
+        setAvailableQuantity('')
+        setDescription('')
+        setKeywords('')
+        setProductName('')
+        setProductUrl('')
+    }
+
     return (
     <div>
-            <Navbar createShop={false}/>
-            <div className={styles.inputs}>
+         <Navbar createShop={true}/>
+            <form className={styles.inputs}>
                 <h2>Add Product</h2>
                 <div>
-                    <label>available Quantity</label>
-                    <input type='text' name='availableQuantity' value={availableQuantity} onChange={(e) => setAvailableQuantity(e.target.value)}/>
+                    <label>Available Quantity</label>
+                    <input type='number' min={1} name='availableQuantity' value={availableQuantity} onChange={(e) => setAvailableQuantity(e.target.value)}/>
                 </div>
                 <div className={styles.nameFields}>
                     <label>Product name</label>
@@ -38,13 +49,13 @@ export default function AddProduct() {
                     <label>Product URL</label>
                     <input type='url' name='productUrl' value={productUrl} onChange={(e) => setProductUrl(e.target.value)}/>
                 </div>
-
-
                 <div className={styles.btns}>
-                    <button className='lightBtn'>Add product</button>
-                    <button className='lightBtn'>Cancel</button>
+                    <button type='submit' className='lightBtn'>Save</button>
+                    <button className='lightBtn' onClick={()=>handleCancel}>Cancel</button>
                 </div>
-            </div>
+            </form>
     </div>
-    )
+    );
 }
+
+export default AddProduct

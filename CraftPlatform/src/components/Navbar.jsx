@@ -30,7 +30,7 @@ function Navbar(props) {
                 <FontAwesomeIcon icon={faHeart} />
                 <Link to={'/cart'}><FontAwesomeIcon icon={faCartShopping} style={{color: "#000000",}} /></Link>
                 <Link to={'/AccountSettings'}><FontAwesomeIcon icon={faUser} /></Link>
-                {createdShop ? <Link to='/Shop'><FontAwesomeIcon icon={faStore} /></Link> : <Link to='/CreateShop'><FontAwesomeIcon icon={faStore} /></Link>}
+                {createdShop ? <Link to='/shop-seller'><FontAwesomeIcon icon={faStore} /></Link> : <Link to='/CreateShop'><FontAwesomeIcon icon={faStore} /></Link>}
                 <FontAwesomeIcon icon={faBell} />
             </div>
         </div>

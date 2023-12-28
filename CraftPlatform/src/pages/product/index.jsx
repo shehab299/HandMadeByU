@@ -44,7 +44,7 @@ function Product() {
                     <div className={styles.cart}>
                         <div>
                             <label>Quantity</label>
-                            <input type="number" name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                            <input min={1} type="number" name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                         </div>
                         <button className="blackBtn">Add to cart <FontAwesomeIcon icon={faCartShopping} style={{color: "#FFF"}} /></button>
                     </div> 

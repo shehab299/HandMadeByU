@@ -1,7 +1,7 @@
 import React , {useState} from "react";
 import styles from "../Signup/forms.module.css"
 
-function SellerSignUp() {
+function CreateShop() {
 
     const [shopName , setShopName] = useState('');
     const [businessType , setBusinessType] = useState('');
@@ -23,4 +23,4 @@ function SellerSignUp() {
     );
 }
 
-export default SellerSignUp;
+export default CreateShop;
