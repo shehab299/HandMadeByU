@@ -4,7 +4,7 @@ import styles from "./ShopSettings.module.css"
 function ShopSettings(params) {
     return(
         <div>
-            <Navbar createShop={true}/>
+            <Navbar createdShop={true}/>
             <div className={styles.inputs}>
                 <h2>Shop Settings</h2>
                 <div className={styles.nameFields}>
