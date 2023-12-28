@@ -1,28 +1,69 @@
 const Pool = require('pg').Pool
 require('dotenv').config()
 
+
+
+
 const conParams = {
-    user : process.env.USER_NAME,
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
-    port: process.env.DATABASE_PORT,
-    database: process.env.DATABASE_NAME
+    connectionString : process.env.CONNECTION_STRING,
+    ssl: {
+        rejectUnauthorized: false
+    },
 }
 
 const pool = new Pool(conParams);
 
 
+async function executeNonQuery(query){
+    try {
+        const res = await pool.query(query);
 
-// const insertTodo = async (description) => {
+        if(res.rowCount > 0)
+            return true;
+        else 
+            return false;
 
-//     const q = `INSERT INTO todo (description) VALUES('${description}')`;
+    } catch (error) 
+    {
+        console.log(error);
+        return false;
+    }
+}
 
-//     console.log(q);
+async function executeQuery(query){
+    try{
+        const res = await pool.query(query);
 
-//     const res = await pool.query(q)
+        if(res.rows.length > 0)
+            return res.rows;
+        else 
+            return null;
+    }
+    catch(error){
 
-//     return res
-// }
+        console.log(error);
+        return null;
+    }
+
+}
+
+async function executeScaler(query){
+    try{
+        const res = await pool.query(query);
+
+        if(res.rows.length > 0)
+            return res.rows[0][Object.keys(res.rows[0])[0]];
+        else 
+            return null;
+    }
+    catch(error){
+
+        console.log(error);
+        return null;
+    }
+}
 
 
-module.exports = {insertTodo}
+
+
+module.exports = {executeScaler , executeNonQuery , executeQuery};
