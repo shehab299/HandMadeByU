@@ -20,6 +20,7 @@ import AddProduct from './pages/AddProduct/index.jsx'
 import Competition from './pages/Competition/index.jsx'
 import ConfirmOrder from './pages/ConfirmOrder/index.jsx'
 import AddAddress from './pages/AddAddress/index.jsx'
+import Dashboard from './pages/Dashboard/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
   {
     path : '/CreateShop' ,
     element:<CreateShop/>,
+  },
+  {
+    path : '/Dashboard' ,
+    element:<Dashboard/>,
   }
 ])
 

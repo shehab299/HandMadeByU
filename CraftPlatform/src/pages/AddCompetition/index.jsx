@@ -10,10 +10,19 @@ function AddCompetition(params) {
     const [endDate , setEndDate] = useState('');
     const [description , setDescription] = useState('');
 
+    function handleCancel() {
+        setTitle('')
+        setDiscount('')
+        setStatus('')
+        setCreationDate('')
+        setEndDate('')
+        setDescription('')
+    }
+
     return (
     <div>
          <Navbar createShop={false}/>
-            <div className={styles.inputs}>
+            <form className={styles.inputs}>
                 <h2>Add competition</h2>
                 <div className={styles.nameFields}>
                     <label>Title</label>
@@ -21,7 +30,7 @@ function AddCompetition(params) {
                 </div>
                 <div>
                     <label>Discount</label>
-                    <input type='text' name='discount' value={discount} onChange={(e) => setDiscount(e.target.value)}/>
+                    <input type='number' min={1} step={0.01} name='discount' value={discount} onChange={(e) => setDiscount(e.target.value)}/>
                 </div>
                 <div>
                     <label>Status</label>
@@ -44,10 +53,10 @@ function AddCompetition(params) {
     
 
                 <div className={styles.btns}>
-                    <button className='lightBtn'>Save</button>
-                    <button className='lightBtn'>Cancel</button>
+                    <button type="submit" className='lightBtn'>Save</button>
+                    <button className='lightBtn' onClick={()=>handleCancel}>Cancel</button>
                 </div>
-            </div>
+            </form>
     </div>
     );
 }
