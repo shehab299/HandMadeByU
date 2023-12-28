@@ -6,7 +6,6 @@ import Home from './pages/Home'
 import Error from './pages/Error'
 import Shop from './pages/Shop/index.jsx' 
 import Review from './components/Review.jsx'
-import Review from './pages/product/review'
 import Product from './pages/product'
 import Order from './pages/Order'
 import Navbar from './components/Navbar'
@@ -63,6 +62,18 @@ const router = createBrowserRouter([
   {
     path : '/Shop',
     element:<Shop IsSeller={0}/>,
+  },
+  {
+    path : '/Competition',
+    element:<Compitetion IsSeller={1}/>,
+  },
+  {
+    path : '/ConfirmOrder',
+    element:<ConfirmOrder/>,
+  },
+  {
+    path : '/AddAddress',
+    element:<AddAddress/>,
   },
   {
     path : '/Cart' ,

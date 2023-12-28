@@ -14,8 +14,8 @@ function Cart(){
     let totalQuantity=0;
 
     productsInCart.map((prod)=>{
-        totalQuantity++
-        totalPrice+=prod.Price
+        totalQuantity+=prod.Quantity
+        totalPrice+=prod.Price*prod.Quantity
     })
 
     const [TotalPrice,setTotalPrice]=useState(totalPrice);
@@ -23,10 +23,9 @@ function Cart(){
     const [ProductsInCart,setProductsInCart]=useState(productsInCart);
     const [ShopsInCart,setShopsInCart]=useState(shopsInCart);
 
-    function handleRemoveClick(TotalPrice, price, PID) {
-        TotalPrice-= price;
-        setTotalPrice(TotalPrice);
-        setTotalQuantity(TotalQuantity-1);
+    function handleRemoveClick(prod,price, PID) {
+        setTotalPrice(TotalPrice-price*prod.Quantity);
+        setTotalQuantity(TotalQuantity-prod.Quantity);
         productsInCart=ProductsInCart.filter((product)=>{return product.PID!=PID})
         setProductsInCart(productsInCart)
         shopsInCart=productsInCart.map(product=>product.SID)
@@ -41,6 +40,21 @@ function Cart(){
         setTotalQuantity(0);
         setProductsInCart([]);
         setShopsInCart([]);
+    }
+
+    function reduceQuantity(prod)
+    {
+        prod.Quantity--;
+        setTotalQuantity(TotalQuantity-1)
+        setTotalPrice(TotalPrice-prod.Price)
+        if(prod.Quantity==0)
+        {
+            productsInCart=ProductsInCart.filter((product)=>{return product.PID!=prod.PID})
+            setProductsInCart(productsInCart)
+            shopsInCart=productsInCart.map(product=>product.SID)
+            shopsInCart= [...new Set(shopsInCart)];
+            setShopsInCart(shopsInCart)
+        }
     }
 
     return <>
@@ -71,11 +85,12 @@ function Cart(){
                                 <div className={style.row}>
                                     <p>Quantity:</p>
                                     <p>{product.Quantity}</p>
+                                    <button onClick={()=>reduceQuantity(product)}>-</button>
                                 </div>
                             </div>
                             <div className={style.PriceRemove}>
                                 <p>{product.Price} $</p>
-                                <button className={style.RemoveButton} onClick={() => {handleRemoveClick(TotalPrice,product.Price,product.PID)}}>Remove</button>
+                                <button className={style.RemoveButton} onClick={() => {handleRemoveClick(product,product.Price,product.PID)}}>Remove</button>
                             </div>
                         </div>
                         })}
