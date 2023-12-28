@@ -2,7 +2,7 @@ import Products from "../../components/Products";
 import Data from "./FollowedShop.json";
 import CompetitionDetails from "../../components/CompetitionDetails";
 import Navbar from "../../components/Navbar";
-import ShopCompetitions from "../../components/ShopCompetitions";
+
 function Home()
 {
     return <> 

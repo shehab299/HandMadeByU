@@ -20,7 +20,7 @@ import AddProduct from './pages/AddProduct/index.jsx'
 import Competition from './pages/Competition/index.jsx'
 import ConfirmOrder from './pages/ConfirmOrder/index.jsx'
 import AddAddress from './pages/AddAddress/index.jsx'
-import { AuthContextProvider } from './context/AuthContext'
+import { AuthContextProvider } from './context/authContext.jsx'
 import Dashboard from './pages/Dashboard/index.jsx'
 
 const router = createBrowserRouter([
