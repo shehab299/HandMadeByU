@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 //components
 import Navbar from '../../components/Navbar'
-import Products from "../../components/Product";
+import Products from "../../components/Products";
 
 //pages
 import Shop from '../Shop'
@@ -20,10 +20,9 @@ export default function Dashboard() {
     const [display, setDisplay] = useState('shopSettings')
     const thisProducts= shop.Products;
     return (
+        <>
+        <Navbar createdShop={true} />
     <div className={styles.container}>
-        <div className={styles.navbar}>
-            <Navbar createdShop={true} />
-        </div>
         <div className={styles.sidebar}>
             <button onClick={()=>setDisplay('shopSettings')}>Shop Settings</button>
             <button onClick={()=>setDisplay('product')}>Products</button>
@@ -45,5 +44,7 @@ export default function Dashboard() {
                 <button>Edit competition</button>
             </div> : null)) }
         </div>
-    </div>)
+    </div>
+    </>
+    )
 }

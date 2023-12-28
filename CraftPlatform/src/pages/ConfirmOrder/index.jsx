@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar"
 import Data from './Addresses&Coupon.json'
 import style from './ConfirmOrder.module.css'
@@ -34,7 +35,9 @@ function ConfirmOrder()
                     </div>
             })}
             <button className={style.SkipButton}>Ship Here</button>
-            <button className={style.Button}>+ Add a new address</button>
+            <Link to={'/AddAddress'}>
+                <button className={style.Button}>+ Add a new address</button>
+            </Link>
         </div>
         {/* Customer Coupons */}
         <div className={style.Column}>
