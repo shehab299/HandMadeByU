@@ -7,10 +7,10 @@ require('dotenv').config()
 const productsRoutes = require('./routes/product');
 const shopRoutes = require('./routes/shop');
 const followRoutes = require('./routes/follow');
+const cartRoutes = require('./routes/cart');
 
 //MIDDLEWARE
-const authMiddleWare = require('./Middlewares/authMiddleWare')
-
+const authMiddleWare = require('./Middlewares/authMiddleWare');
 //CONTROLLERS
 const authController = require('./controllers/auth')
 
@@ -28,13 +28,13 @@ app.use((req,res,next) => {
     next();
 })
 
-
+app.use('/api/cart',cartRoutes);
 app.use('/api/product',productsRoutes);
 app.use('/api/shop',shopRoutes);
 app.use('/api/follow',followRoutes);
 app.post('/register' , authController.registerUser);
 app.post('/login', authController.loginUser);
-app.get('/users',authMiddleWare.isLoggedIn,authController.getAllUsers)
+app.get('/users',authController.getAllUsers)
 
 
 //START SERVER

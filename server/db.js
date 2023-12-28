@@ -1,19 +1,20 @@
 const Pool = require('pg').Pool
 require('dotenv').config()
 
+
+
+
 const conParams = {
-    user : process.env.USER_NAME,
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
-    port: process.env.DATABASE_PORT,
-    database: process.env.DATABASE_NAME
+    connectionString : process.env.CONNECTION_STRING,
+    ssl: {
+        rejectUnauthorized: false
+    },
 }
 
 const pool = new Pool(conParams);
 
 
 async function executeNonQuery(query){
-    
     try {
         const res = await pool.query(query);
 
@@ -30,7 +31,6 @@ async function executeNonQuery(query){
 }
 
 async function executeQuery(query){
-
     try{
         const res = await pool.query(query);
 

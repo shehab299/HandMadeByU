@@ -1,17 +1,43 @@
 const express = require('express');
 const router = express.Router();
+const dbMan = require('../db');
 
 router.get(`/`, async (req, res) =>{
 
-    //GET ALL SHOPS
+    const query = `SELECT * FROM public."Shop"`
 
+    const result = await dbMan.executeQuery(query);
+
+
+    if(!result)
+    {
+        res.json({found:false , data:null});
+        res.end()
+    }
+    else{
+        res.json({found:true, data:result[0]});
+        res.end()
+    }    
 })
 
 router.get('/:id', async(req,res)=>{
 
     const shopId = req.params.id;
 
-    //GET SPECIFIC SHOP
+    const query = `SELECT * FROM public."Shop" WHERE "Shop"."SID" = ${shopId}`;
+
+    const result = await dbMan.executeQuery(query);
+
+    if(!result)
+    {
+        res.json({found:false , data:null});
+        res.end()
+    }
+    else{
+        res.json({found:true, data:result[0]});
+        res.end()
+    }
+    
 
 })
 
@@ -19,7 +45,23 @@ router.get('/:id/follower', async (req,res) => {
 
     const shopId = req.params.id;
 
-    // GET ALL FOLLOWERS OF THE SHOP
+    const query = `SELECT * 
+                   FROM public."Customer",public."Follow_Shop"  
+                   WHERE "SID" = ${shopId} and "Customer"."CID" = "Follow_Shop"."CID"`;
+
+    const result = await dbMan.executeQuery(query);
+    console.log(result);
+
+    if(!result)
+    {
+        res.json({found:false , data:null});
+        res.end()
+    }
+    else{
+        res.json({found:true, data:result});
+        res.end()
+    }
+
 
 })
 
@@ -27,8 +69,19 @@ router.get('/:id/follower', async (req,res) => {
 router.get('/:id/product' , async(req,res) => {
     const shopId = req.params.id;
 
-    // GET ALL PRODUCTS OF THE SHOP
+    const query = `SELECT * FROM public."Product" WHERE "Product"."SID" = ${shopId}`;
 
+    const result = await dbMan.executeQuery(query);
+
+    if(!result)
+    {
+        res.json({found:false , data:null});
+        res.end()
+    }
+    else{
+        res.json({found:true, data:result});
+        res.end()
+    }
 })
 
 
