@@ -10,7 +10,7 @@ const generateToken = (user) =>
 {
     const payload = {
         id: user.userId,
-        email: user.userEmail
+        email: user.Username
     }
 
     const secret = process.env.SECRET;
@@ -23,21 +23,18 @@ const generateToken = (user) =>
 
 //VALIDATION
 
-const validate = (email,password) =>
+const validate = (Username,password) =>
 {    
-    if(!validator.isEmail(email))
-        return false;
-
     if(password.length == 0)
         return false;
 
     return true;
 }
 
-const isUserExits = async (email) =>
+const isUserExits = async (Username) =>
 {
     try{
-        let q = `SELECT COUNT(email) FROM users WHERE email = '${email}'`;
+        let q = `SELECT COUNT(Username) FROM users WHERE email = '${email}'`;
         const usersNum = await dbMan.executeScaler(q);
 
         if(usersNum > 0)
@@ -55,8 +52,6 @@ const isUserExits = async (email) =>
 
 
 const getAllUsers = async (req,res) => {
-
-    const {email , password} = req.body;
 
     const q = 'SELECT * FROM public."Customer"';
 
@@ -77,17 +72,17 @@ const getAllUsers = async (req,res) => {
 const registerUser = async (req,res) => {
 
     try{
-        const {email,password} = req.body;
+        const {Username,password} = req.body;
         let resBody = {};
 
-        if(!validateSignUp(email,password))
+        if(!validateSignUp(Username,password))
             resBody.message = "INVALID DATA";
 
-        if(isUserExits(email))
+        if(isUserExits(Username))
             resBody.message = "User Already Exists";
         else 
         {
-            q = `INSERT INTO users(email,password) VALUES('${email}','${password}')`;
+            q = `INSERT INTO users(Username,password) VALUES('${Username}','${password}')`;
             const insertUser = await dbMan.executeNonQuery(q);
 
             if(!insertUser)
@@ -95,15 +90,19 @@ const registerUser = async (req,res) => {
                 resBody.message = "SOMETHING WENT WRONG"
             }
             else{
-                resBody.email = email;
+                resBody.Username = Username;
                 resBody.message = "USER REGISTERD SUCCESSFULLY";
                 
-                q = `SELECT user_id FROM users WHERE email = ${email}`;
+                q = `SELECT user_id FROM users WHERE Username = ${Username}`;
                 const result = await dbMan.executeQuery(q);
                 const user_id = result[0]['user_id'];
                 
                 q = `INSERT INTO Cart (Customer_ID) VALUES (${user_id})`;
                 const createCart = await dbMan.executeNonQuery(q);
+
+                if(!createCart)
+                    resBody.message = "SOMETHING WENT WRONG WHILE CREATING CART";
+
             }
         }
 
@@ -118,29 +117,29 @@ const registerUser = async (req,res) => {
 
 const loginUser = async (req,res) => {
 
-    const {email,password} = req.body;
+    const {Username,password} = req.body;
     resBody = {}
 
 
-    if(!validate(email,password)){
+    if(!validate(Username,password)){
         resBody.message = "INVALID DATA";
         resBody.success = false;
     }
 
-    const isExists = await isUserExits(email);
+    const isExists = await isUserExits(Username);
 
     if(!isExists)
     {
-        resBody.message = "Email Doesn't Exist";
+        resBody.message = "Username Doesn't Exist";
         resBody.success = false;
     }
     try{
-        const q = `SELECT user_id,email,password FROM users WHERE email = '${email}'`;
+        const q = `SELECT user_id,Username,password FROM users WHERE Username = '${Username}'`;
         const result = await dbMan.executeQuery(q);
 
         const user = {};
         user.userId = result[0]['user_id']
-        user.userEmail = result[0]['email'];
+        user.Username = result[0]['Username'];
         user.userPassword = result[0]['password'];
 
         
@@ -151,7 +150,7 @@ const loginUser = async (req,res) => {
         else{
             resBody.success = true;
             resBody.message = "LOGGED IN SUCCESSFULLY";
-            resBody.email = user.userEmail;
+            resBody.Username = user.Username;
             resBody.token = generateToken(user);
         }
 
