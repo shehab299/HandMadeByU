@@ -20,6 +20,7 @@ margin:27px;
     height: 40px;
     flex-shrink: 0;
     color: #000;
+    box-shadow: none !important;
 }
 
 .row
@@ -60,7 +61,7 @@ margin:27px;
     margin:20px;
     width:30px;
     height:30px;
-
+    box-shadow: none !important;
 }
 
 .CouponBox{

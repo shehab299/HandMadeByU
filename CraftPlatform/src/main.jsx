@@ -61,7 +61,7 @@ const router = createBrowserRouter([
   },
   {
     path : '/Shop',
-    element:<Shop IsSeller={0}/>,
+    element:<Shop IsSeller={1}/>,
   },
   {
     path : '/Competition',

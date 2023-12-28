@@ -56,13 +56,10 @@ function Shop(props)
                 <h3>{shop.Description}</h3>
                 {(!props.IsSeller)?<button className={style.Buttons} onClick={()=>handleFollowClick()}>{FollowButtonText}{(FollowButtonText=="Follow")?<span>&#10084;</span>:null}</button>:null}
             </div>
-            {(props.IsSeller) ? <button className={style.EditPhoto}>&#x1F4F7;</button>:null}
         </div>
-        {(props.IsSeller)? <button className={style.Buttons}>EditBanner &#x1F4F7;</button>:null}
-
     <div className={style.Container}>
     <Categories Categories={categories} IsSeller={props.IsSeller}/>
-    <Products Products={thisProducts}/>
+    <Products Products={thisProducts} IsSeller={props.IsSeller}/>
     </div>
     </>
 }

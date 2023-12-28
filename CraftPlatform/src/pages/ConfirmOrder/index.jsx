@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "../../components/Navbar"
 import Data from './Addresses&Coupon.json'
 import style from './ConfirmOrder.module.css'
@@ -8,6 +9,49 @@ function ConfirmOrder()
     let adresses=Data.Adresses;
     let coupons=Data.Coupons;
 
+    const [selectedAddress,setSelectedAddress]=useState(null);
+    const [selectedCoupons,setSelectedCoupons]=useState([]);
+
+    function onAddressChange(e)
+    {
+        setSelectedAddress(e.target.value)
+    }
+
+    function onCouponChange(e)
+    {
+        const {value,checked}= e.target
+        if(checked)
+        {
+            setSelectedCoupons(pre=>[...pre,value])
+        }
+        else
+        {
+            setSelectedCoupons(pre=>{return [...pre.filter((coupon)=>coupon!=value)]})
+        }
+    }
+
+    function handleApplyClick()
+    {
+        setSelectedCoupons([])
+        
+    }
+
+    function handleShipClick()
+    {
+        console.log
+        if(selectedAddress==null)
+        {
+            alert('please Choose An address')
+        }
+        else{
+            
+            setSelectedAddress(null)
+        }
+    }
+
+    console.log(selectedCoupons)
+    console.log(selectedAddress)
+
     return<>
     <Navbar/>
     <div className={style.Container}>
@@ -16,7 +60,7 @@ function ConfirmOrder()
             {
                 adresses.map((Address,Key)=>{
                    return <div key={Key} className={style.row}>
-                        <input type="radio" name="Address" className={style.SelectButton}/>
+                        <input type="radio" name="Address" checked={(selectedAddress==Key)} className={style.SelectButton} value={Key} onChange={onAddressChange}/>
                         <div className={style.AddressBox}>
                             <div className={style.row}>
                             <p>Street:&nbsp;</p>
@@ -33,7 +77,7 @@ function ConfirmOrder()
                         </div>
                     </div>
             })}
-            <button className={style.SkipButton}>Ship Here</button>
+            <button className={style.SkipButton} onClick={()=>handleShipClick()}>Ship Here</button>
             <button className={style.Button}>+ Add a new address</button>
         </div>
         {/* Customer Coupons */}
@@ -62,7 +106,7 @@ function ConfirmOrder()
                                 <p>{coupon.Discount}%</p>
                                 </div>
                                 </div>
-                                <input type="checkbox" name="Coupons" className={style.SelectCoupon}/>
+                                <input type="checkbox" name="Coupons" value={Key} className={style.SelectCoupon} onChange={onCouponChange}/>
                             </div>
                         </div>
                     </div>
@@ -70,7 +114,7 @@ function ConfirmOrder()
             }
             </div>
             </div>
-            <button className={style.Button}>Apply</button>
+            <button className={style.Button} onClick={()=>handleApplyClick()}>Apply</button>
         </div>
     </div>
     </>
