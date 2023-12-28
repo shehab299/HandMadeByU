@@ -1,0 +1,70 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+.lightBtn {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Poppins', sans-serif;
+
+    padding: 10px 35px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+input {
+    border: none;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 10px;
+
+    background: #FFF;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.blackBtn {
+    color: #FFF;
+    background-color: black;
+
+    padding: 6px 30px;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.imgContainer {
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 20px;
+    width: 40%;   
+    height: fit-content;
+}
+
+.productImg {
+    vertical-align: middle;
+    width: 100%;
+
+    border-radius: 20px;
+}
+

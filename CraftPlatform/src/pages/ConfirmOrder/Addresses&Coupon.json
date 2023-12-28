@@ -1,0 +1,35 @@
+{
+    "CID":1234,
+    "Adresses":
+    [
+        {
+            "Street":"st1",
+            "City":"city1",
+            "Country":"Country1"
+        },
+        {
+            "Street":"st2",
+            "City":"city2",
+            "Country":"Country2"
+        },
+        {
+            "Street":"st3",
+            "City":"city3",
+            "Country":"Country3"
+        }
+
+    ],
+    "Coupons":
+    [
+        {
+            "Code":"code1",
+            "PID":"12",
+            "Discount":25
+        },
+        {
+            "Code":"code2",
+            "PID":"32",
+            "Discount":30
+        }
+    ]
+}

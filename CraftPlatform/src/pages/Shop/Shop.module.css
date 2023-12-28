@@ -1,0 +1,80 @@
+
+.Container  
+{
+    margin-top:50px;
+    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns:24% 66%;
+    gap:5%;
+    padding: 10px;
+}
+
+.ShopInfo{
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-start;
+position:absolute;
+top:206px;
+left:55px;
+}
+
+.Logo
+{
+    width: 250px;
+   height: 250px;
+   flex-shrink: 0;
+   border-radius: 250px;
+   margin:20px;
+}
+
+.Banner 
+{
+    width : 100%;
+    height: 348px;
+    filter: blur(5px);
+}
+
+.Buttons{
+    width: 250px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    margin:10px;
+}
+
+.ShopCategories{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.Category{
+    text-align: center;
+}
+
+
+.SellerOptions
+{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.EditPhoto{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background-color: #FFF;
+    position: absolute;
+    top:200px;
+    left:250px;
+}
