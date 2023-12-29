@@ -63,10 +63,12 @@ router.get('/:id/review', async (req,res) => {
 
     const productId = req.params.id;
 
-    const query = `SELECT * FROM Review WHERE ProductID = ${product}`;
+    const query = `SELECT "Username","Content","Rating" 
+                   FROM "Review","Customer" 
+                   WHERE "Review"."ProductID" = ${productId} and "Review"."Customer_ID" = "Customer"."CID"`;
 
-    const result = dbMan.executeQuery(query);
-
+    const result = await dbMan.executeQuery(query);
+    
     if(!result)
     {
         res.status(404).json({found:false,data:null});

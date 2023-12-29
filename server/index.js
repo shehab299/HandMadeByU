@@ -4,6 +4,7 @@ const cors = require("cors")
 require('dotenv').config()
 
 //ROUTES
+const comptetionRoutes = require('./routes/comptetion');
 const productsRoutes = require('./routes/product');
 const shopRoutes = require('./routes/shop');
 const followRoutes = require('./routes/follow');
@@ -28,6 +29,8 @@ app.use((req,res,next) => {
     next();
 })
 
+
+app.use('/api/comptetion',comptetionRoutes);
 app.use('/api/cart',cartRoutes);
 app.use('/api/product',productsRoutes);
 app.use('/api/shop',shopRoutes);
@@ -35,6 +38,7 @@ app.use('/api/follow',followRoutes);
 app.post('/register' , authController.registerUser);
 app.post('/login', authController.loginUser);
 app.get('/users',authController.getAllUsers)
+
 
 
 //START SERVER
