@@ -9,7 +9,7 @@ import api from "../../services/api.js"
 
 
 
-function Shop(props)
+export default function Shop(props)
 {    
     const {id} = useParams();
     const [shop, setShop] = useState({});

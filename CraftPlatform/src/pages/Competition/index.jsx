@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import competition from "./Competition.json"
 import Navbar from "../../components/Navbar";
 import CompetitionDetails from '../../components/CompetitionDetails';
 import { useParams } from "react-router-dom";
@@ -46,12 +45,9 @@ function Compitetion(props)
     {/* display Shop Info */}
     <div>
     <div className={style.ShopInfo}>
-        <img src={competition.Logo_URL} className={style.Logo}/>
-        <h3>{competition.Shop_Name}</h3>
-        {!props.IsSeller && <button>follow</button>}
         <img src={compete.Logo_URL} className={style.Logo}/>
+        {!props.IsSeller && <button>follow</button>}
         <h3>{compete.Name}</h3>
-        <button>follow</button>
     </div>
 
     {/* Competition details */}
