@@ -3,13 +3,16 @@ import Competitions from './Competitions.json'
 import { Link } from 'react-router-dom'
 
 export default function ShopCompetitions() {
-    return <>
+    return <div>
     {
         Competitions.map((competition,index)=>{
-            {/* return <Link to={''}></Link><CompetitionDetails competition={competition} key={index} IsSeller={1}/> */}
+            return (
+            <>
+                <CompetitionDetails competition={competition} key={index} IsSeller={1}/>
+                <Link to={'/EditCompetition'}><button className="blackBtn">Edit Competition</button></Link>
+            </>)
         })
     }
-    <button> <Link to={'/AddComptetion'}> Add Competition </Link></button>
-    <button>Edit Competition </button>
-    </>
+    <Link to={'/AddComptetion'}><button className="blackBtn">Add Competition</button></Link>
+    </div>
 }

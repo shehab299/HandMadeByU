@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter , RouterProvider } from 'react-router-dom'
+import { createBrowserRouter , RouterProvider , Navigate} from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext.jsx'
 
 import Home from './pages/Home'
 import Error from './pages/Error'
@@ -22,6 +23,8 @@ import ConfirmOrder from './pages/ConfirmOrder/index.jsx'
 import AddAddress from './pages/AddAddress/index.jsx'
 import { AuthContextProvider } from './context/authContext.jsx'
 import Dashboard from './pages/Dashboard/index.jsx'
+import EditProduct from './pages/EditProduct/index.jsx'
+import EditCompetition from './pages/EditCompetition/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,7 @@ const router = createBrowserRouter([
     element: <Review/>
   },
   {
-    path: '/Product',
+    path: '/Product/:id',
     element: <Product/>
   },
   {
@@ -62,7 +65,7 @@ const router = createBrowserRouter([
     element: <Login/>
   },
   {
-    path : '/shop-customer',
+    path : '/shop-customer/:id',
     element:<Shop IsSeller={0}/>,
   },
   {
@@ -99,7 +102,7 @@ const router = createBrowserRouter([
     element:<AddProduct/>,
   },
   {
-    path : '/Competition' ,
+    path : '/Competition/:id' ,
     element:<Competition/>,
   },
   {
@@ -117,7 +120,15 @@ const router = createBrowserRouter([
   {
     path : '/Dashboard' ,
     element:<Dashboard/>,
-  }
+  },
+  {
+    path : '/EditProduct' ,
+    element:<EditProduct/>,
+  },
+  {
+    path : '/EditCompetition' ,
+    element:<EditCompetition/>,
+  },
 ])
 
 

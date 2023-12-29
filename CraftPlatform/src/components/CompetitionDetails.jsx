@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 //import style from "./Competition.module.css"
 import { useState } from "react";
+import styles from './CompetitionDetails.module.css'
 
 function CompetitionDetails(props)
 {
@@ -12,11 +13,11 @@ function CompetitionDetails(props)
         (ButtonText=="Participate")?setButtonText("Participated"):setButtonText("Participate");
     }
 
-    return <div>
+    return <div className={styles.container}>
         <div>
             <div>
                 <h2>{props.competition.Title}</h2>
-                <p>Competition End Date: {props.competition.EndTime}</p>
+                <p>Competition End Date: {props.competition.End_Date}</p>
             </div>
             {(!props.IsSeller)?<button onClick={()=>handleParticipateClicked()}>{ButtonText}</button>:null}
         </div>

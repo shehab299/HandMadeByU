@@ -1,36 +1,33 @@
-//conmponents
-import Navbar from "../../components/Navbar";
-
 //styles
 import styles from "../ShopSettings/shopSettings.module.css"
 
 //react
 import { useState } from "react";
 
-function AddProduct(params) {
-    const [productName, setProductName] = useState('')
-    const [description, setDescription] = useState('')
-    const [availableQuantity, setAvailableQuantity] = useState('')
-    const [keywords, setKeywords] = useState('')
-    const [productUrl, setProductUrl] = useState('')
+function EditProduct(props) {
+    const [productName, setProductName] = useState(props.productName)
+    const [description, setDescription] = useState(props.description)
+    const [availableQuantity, setAvailableQuantity] = useState(props.availableQuantity)
+    const [keywords, setKeywords] = useState(props.keywords)
+    const [productUrl, setProductUrl] = useState(props.productUrl)
 
     function handleCancel() {
-        setAvailableQuantity('')
-        setDescription('')
-        setKeywords('')
-        setProductName('')
-        setProductUrl('')
+        setAvailableQuantity(props.productName)
+        setDescription(props.description)
+        setKeywords(props.availableQuantity)
+        setProductName(props.keywords)
+        setProductUrl(props.productUrl)
     }
 
     return (
     <div>
         <form className={styles.inputs}>
-            <h2>Add Product</h2>
+            <h2>Edit Product</h2>
             <div>
                 <label>Available Quantity</label>
-                <input type='number' min={1} name='availableQuantity' value={availableQuantity} onChange={(e) => setAvailableQuantity(e.target.value)}/>
+                <input type='number' min={1} max={props.availableQuantity} name='availableQuantity' value={availableQuantity} onChange={(e) => setAvailableQuantity(e.target.value)}/>
             </div>
-            <div className={styles.nameFields}>
+            <div>
                 <label>Product name</label>
                 <input type='text' name='productName' value={productName} onChange={(e) => setProductName(e.target.value)}/>
             </div>
@@ -57,4 +54,4 @@ function AddProduct(params) {
     );
 }
 
-export default AddProduct
+export default EditProduct

@@ -15,8 +15,10 @@ const Products=(props)=>{
             </Link>
             <div className={style.ProductInfo}>
                 <p>{Product.Name}</p>
-                <p>{Product.Price} $</p>
+                <p>Product price: {Product.Price} $</p>
+                
             </div>
+            <Link to={'/EditProduct'}><button className='blackBtn'>Edit</button></Link>
             </div>
         })}
         </div>

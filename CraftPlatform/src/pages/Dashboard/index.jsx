@@ -1,5 +1,6 @@
 //styles
 import styles from './dashboard.module.css'
+import navbarStyle from '../../components/navbar.module.css'
 
 //react
 import { useState } from 'react'
@@ -19,18 +20,16 @@ import shop from "../Shop/Shop.json"
 
 export default function Dashboard() {
     const [display, setDisplay] = useState('shopSettings')
+    const [visibale, setVisibale] = useState(false)
     const thisProducts= shop.Products;
     return (
     <>
-        <div className={styles.navbar}>
-            <Navbar  createdShop={true} />
-        </div>
-    <div className={styles.container}>
-        <div className={styles.sidebar}>
+        <div className={[styles.navbar]}>
             <button onClick={()=>setDisplay('shopSettings')}>Shop Settings</button>
             <button onClick={()=>setDisplay('product')}>Products</button>
             <button onClick={()=>setDisplay('competition')}>Competitions</button>
-            <button onClick={()=>setDisplay('Orders')}>Orders</button>
+            <button onClick={()=>setDisplay('orders')}>Orders</button>
+            <Link to={'/'}><button>Home</button></Link>
         </div>
         <div className={styles.mainContent}>
             {display=='shopSettings' ? 
@@ -38,18 +37,13 @@ export default function Dashboard() {
             (display=='product' ? 
             <div>
                 <Products Products={thisProducts}/>
-                <Link to={'/AddProduct'}><button>Add Product</button></Link>
-                <button>Edit Product</button>
+                <Link to={'/AddProduct'}><button className='blackBtn'>Add Product</button></Link>
             </div> : 
             (display=='competition' ? 
-            <div>
-               <ShopCompetitions />
-            </div> : 
-            <div>
-                <ShopOrders/>
-            </div>)) }
+            <ShopCompetitions /> : 
+            <ShopOrders/>
+            )) }
         </div>
-    </div>
     </>
     )
 }
