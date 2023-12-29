@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter , RouterProvider } from 'react-router-dom'
+import { createBrowserRouter , RouterProvider , Navigate} from 'react-router-dom'
+import { useAuthContext } from './hooks/useAuthContext.jsx'
 
 import Home from './pages/Home'
 import Error from './pages/Error'
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
     element: <Review/>
   },
   {
-    path: '/Product',
+    path: '/Product/:id',
     element: <Product/>
   },
   {
@@ -62,7 +63,7 @@ const router = createBrowserRouter([
     element: <Login/>
   },
   {
-    path : '/shop-customer',
+    path : '/shop-customer/:id',
     element:<Shop IsSeller={0}/>,
   },
   {
@@ -86,7 +87,7 @@ const router = createBrowserRouter([
     element:<AddProduct/>,
   },
   {
-    path : '/Competition' ,
+    path : '/Competition/:id' ,
     element:<Competition/>,
   },
   {

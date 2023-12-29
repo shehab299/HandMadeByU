@@ -10,9 +10,9 @@ export default function Review(props) {
     <div className={styles.container}>
         <div className={styles.userInfo}>
             <FontAwesomeIcon icon={faUser} className={styles.UserIcon}/>
-            <p>{props.reviewObj.customerName}</p>
+            <p>{props.reviewObj.Username}</p>
         </div>
-        <p>{props.reviewObj.reviewDescription}</p>    
+        <p>{props.reviewObj.Content}</p>    
     </div>
     );
 }

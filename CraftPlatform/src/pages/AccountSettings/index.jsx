@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar";
 import styles from "./account.module.css"
 
+import useLogout from '../../hooks/useLogout'
 import { useState } from "react";
 
 function AccountSettings({createdShop}) {
@@ -11,6 +12,7 @@ function AccountSettings({createdShop}) {
     const [username , setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [gender, setGender] = useState('');
+    const {handleLogOut} = useLogout();
 
     return(
         <div>
@@ -42,8 +44,8 @@ function AccountSettings({createdShop}) {
 
                 <div className={styles.btns}>
                     <button className='lightBtn'>Save</button>
-                    <button className='lightBtn'>Sign Out</button>
-                    <button className='lightBtn'>Delete account</button>
+                    <button className='lightBtn' onClick={handleLogOut}>Sign Out</button>
+                    <button className='lightBtn' >Delete account</button>
                 </div>
 
             </div>
