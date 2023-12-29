@@ -87,7 +87,21 @@ router.get('/:id/product' , async(req,res) => {
 
 router.post('/', async (req,res)=>{
 
-    //ADD SHOP
+    const {shopName,description,userId} = req.body;
+
+    const query = `INSERT INTO public."Shop"("Name", "Description", "Seller_ID") VALUES ('${shopName}', '${description}', ${userId})`;
+
+    const result = await dbMan.executeNonQuery(query);
+
+    if(!result)
+    {
+        res.json({success:false});
+        res.end()
+    }
+    else{
+        res.json({success:true});
+        res.end()
+    }
 
 })
 
