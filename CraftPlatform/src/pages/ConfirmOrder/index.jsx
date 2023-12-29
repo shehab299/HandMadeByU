@@ -85,7 +85,7 @@ function ConfirmOrder()
                         </div>
                     </div>
             })}
-            <button className={style.SkipButton}>Ship Here</button>
+            <button className={style.SkipButton} onClick={()=>handleShipClick()}>Ship Here</button>
             <Link to={'/AddAddress'}>
                 <button className={style.Button}>+ Add a new address</button>
             </Link>

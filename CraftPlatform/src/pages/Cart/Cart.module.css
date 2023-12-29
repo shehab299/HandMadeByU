@@ -73,7 +73,6 @@
     flex-direction: column;
     justify-content:space-around;
     align-items: center;
-
     gap: 2rem;
 }
 
@@ -82,7 +81,6 @@
     padding: 5px 35px;
     border-radius: 20px;
     background: #000;
-
     border: none;
 }
 
@@ -105,4 +103,21 @@
 
 h3{
     margin:10px;
+}
+
+.minusButton{
+    width:fit-content;
+    height:fit-content;
+    background-color:#FFF;
+    padding:10px;
+    border-radius:10px;
+    margin-right: 10px;
+}
+.plusButton{
+    width:fit-content;
+    height:fit-content;
+    background-color:#FFF;
+    padding:10px;
+    border-radius:10px;
+    margin-left: 10px;
 }

@@ -1,0 +1,14 @@
+.Container
+{
+    margin-top:50px;
+    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns:24% 66%;
+    gap:5%;
+    padding: 10px;
+}
+
+h1
+{
+    text-align: center;
+}

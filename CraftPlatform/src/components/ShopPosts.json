@@ -1,0 +1,77 @@
+[
+    {
+    "postID":1,
+    "shop_Name":"ShopName",
+    "Logo":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+    "Content":"Post Content1",
+    "Attachments":["https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg"],
+    "Comments":
+    [
+        {
+            "CommentId": 1,
+            "customerName": "Customer Name 1",
+            "content": "Content of comment 1"
+        },
+        {
+            "CommentId": 2,
+            "customerName": "Customer Name 2",
+            "content": "Content of comment 2"
+        },
+        {
+            "CommentId": 3,
+            "customerName": "Customer Name 3",
+            "content": "Content of comment 3"
+        }
+    ]
+    },
+    {
+        "postID":2,
+        "shop_Name":"ShopName2",
+        "Logo":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+        "Content":"Post Content2",
+        "Attachments":["https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg"],
+        "Comments":
+        [
+            {
+                "CommentId": 4,
+                "customerName": "Customer Name 4",
+                "content": "Content of comment 4"
+            },
+            {
+                "CommentId": 5,
+                "customerName": "Customer Name 5",
+                "content": "Content of comment 5"
+            },
+            {
+                "CommentId": 6,
+                "customerName": "Customer Name 6",
+                "content": "Content of comment 6"
+            }
+        ]
+    },
+    {
+        "postID":3,
+        "shop_Name":"ShopName3",
+        "Logo":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+        "Content":"Post Content3",
+        "Attachments":["https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg"],
+        "Comments":
+        [
+            {
+                "CommentId": 7,
+                "customerName": "Customer Name 7",
+                "content": "Content of comment 7"
+            },
+            {
+                "CommentId": 5,
+                "customerName": "Customer Name 8",
+                "content": "Content of comment 8"
+            },
+            {
+                "CommentId": 6,
+                "customerName": "Customer Name 9",
+                "content": "Content of comment 9"
+            }
+        ]
+    }
+]

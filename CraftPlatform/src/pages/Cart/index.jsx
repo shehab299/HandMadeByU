@@ -78,6 +78,13 @@ function Cart(){
         }
     }
 
+    function increaseQuantity(prod)
+    {
+        prod.Quantity++;
+        setTotalQuantity(TotalQuantity+1)
+        setTotalPrice(TotalPrice+prod.Price)
+    }
+
     return <>
     <Navbar/>
     <div className={style.Container}>
@@ -106,8 +113,9 @@ function Cart(){
                                 <p>{product.Description}</p>
                                 <div className={style.row}>
                                     <p>Quantity:</p>
+                                    <button className={style.plusButton} onClick={()=>increaseQuantity(product)}>+</button>
                                     <p>{product.Quantity}</p>
-                                    <button onClick={()=>reduceQuantity(product)}>-</button>
+                                    <button className={style.minusButton} onClick={()=>reduceQuantity(product)}>-</button>
                                 </div>
                             </div>
                             <div className={style.PriceRemove}>
