@@ -198,10 +198,51 @@ const getCartItems = async (id) => {
   }
 }
 
+const createShop = async (payload) => {
+
+  try{
+    const response = await fetch(`http://localhost:4000/api/shop`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  }
+  catch(error){
+    console.error('Error fetching product:', error);
+    return null;
+  }
+
+}
+
+const getUserShop = async (id) => {
+  
+    try{
+      const response = await fetch(`http://localhost:4000/api/user/${id}/shop`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      console.log(data);
+      return data;
+    }
+    catch(error){
+      console.error('Error fetching product:', error);
+      return null;
+    }
+}
+
+
 
 const api = {login,register,
              getProduct,getReviews,getShop,getShopProducts,
              getCompetion,getParticipations,getCompetions
-             ,getProducts,getCartItems};
+             ,getProducts,getCartItems,createShop,getUserShop};
 
 export default api;

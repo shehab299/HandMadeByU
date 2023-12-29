@@ -13,33 +13,37 @@ function Cart(){
 
     const [loading, setLoading] = useState(true);
     const [cartItems, setCartItems] = useState([]);
+
+    const [TotalPrice,setTotalPrice]=useState(totalPrice);
+    const [TotalQuantity,setTotalQuantity]=useState(totalQuantity);
+    const [ProductsInCart,setProductsInCart]=useState(productsInCart);
+    const [ShopsInCart,setShopsInCart]=useState(shopsInCart);
     const data = useAuthContext();
 
     const getCartItems = async () => {
         const response = await api.getCartItems(data.cartId);
         if(response.data){
             setCartItems(response.data);
+
+            let productsInCart=response.data;
+            let totalPrice = 0;
+            let shopsInCart=productsInCart.map(product=>product.SID)
+            shopsInCart= [...new Set(shopsInCart)];
+            let totalQuantity=0;
+        
+            productsInCart.map((prod)=>{
+                totalQuantity+=prod.Quantity
+                totalPrice+=prod.Price*prod.Quantity
+            })
+
             setLoading(false);
         }
     }
 
     useEffect(() => {setLoading(true); getCartItems();} , [])
 
-    let productsInCart=cartItems;
-    let totalPrice = 0;
-    let shopsInCart=productsInCart.map(product=>product.SID)
-    shopsInCart= [...new Set(shopsInCart)];
-    let totalQuantity=0;
 
-    productsInCart.map((prod)=>{
-        totalQuantity+=prod.Quantity
-        totalPrice+=prod.Price*prod.Quantity
-    })
 
-    const [TotalPrice,setTotalPrice]=useState(totalPrice);
-    const [TotalQuantity,setTotalQuantity]=useState(totalQuantity);
-    const [ProductsInCart,setProductsInCart]=useState(productsInCart);
-    const [ShopsInCart,setShopsInCart]=useState(shopsInCart);
 
     function handleRemoveClick(prod,price, PID) {
         setTotalPrice(TotalPrice-price*prod.Quantity);
@@ -59,9 +63,6 @@ function Cart(){
         setProductsInCart([]);
         setShopsInCart([]);
     }
-
-    console.log(productsInCart);
-    console.log(shopsInCart);
 
     function reduceQuantity(prod)
     {

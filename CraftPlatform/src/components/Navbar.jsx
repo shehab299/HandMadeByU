@@ -6,6 +6,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { faStore } from '@fortawesome/free-solid-svg-icons';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 // styles
 import styles from './navbar.module.css'
@@ -15,6 +16,9 @@ import { Link } from 'react-router-dom';
 
 
 function Navbar(props) {
+
+    const id = useAuthContext().userId;
+
     const {createdShop} = props;
     return (
         <div className={styles.container}>
@@ -30,7 +34,7 @@ function Navbar(props) {
                 <FontAwesomeIcon icon={faHeart} />
                 <Link to={'/cart'}><FontAwesomeIcon icon={faCartShopping} style={{color: "#000000",}} /></Link>
                 <Link to={'/AccountSettings'}><FontAwesomeIcon icon={faUser} /></Link>
-                {createdShop ? <Link to='/shop-seller'><FontAwesomeIcon icon={faStore} /></Link> : <Link to='/CreateShop'><FontAwesomeIcon icon={faStore} /></Link>}
+                {createdShop ? <Link to= {`/shop-seller/${id}`} ><FontAwesomeIcon icon={faStore} /></Link> : <Link to='/CreateShop'><FontAwesomeIcon icon={faStore} /></Link>}
                 <FontAwesomeIcon icon={faBell} />
             </div>
         </div>

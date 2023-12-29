@@ -4,8 +4,12 @@ import CompetitionDetails from "../../components/CompetitionDetails";
 import Navbar from "../../components/Navbar";
 import { useEffect, useState } from "react";
 import api from "../../services/api.js"
+
+import { useAuthContext } from "../../hooks/useAuthContext.jsx";
+
 import style from './Home.module.css';
 import ShopPosts from "../../components/ShopPosts";
+
 
 
 function Home(props)
@@ -13,12 +17,21 @@ function Home(props)
     const [loading, setLoading] = useState(true);
     const [competitions, setCompetitions] = useState([]);
     const [products , setProducts] = useState([]);
-  
+    const [shopId , setShopId] = useState(null);
+    const [createdShop] = useState(false);
+    const id = useAuthContext().userId;
     
     const getComptetions = async () => {
         const response = await api.getCompetions();
         if(response.data){
             setCompetitions(response.data);
+        }
+    }
+
+    const getShop = async () => {
+        const response = await api.getShop(id);
+        if(response.data){
+            setShopId(response.data.SID);
         }
     }
 
@@ -34,11 +47,16 @@ function Home(props)
         setLoading(true);
         getComptetions();
         getProducts();
+        getShop();
     }, []);
-    
+
+
+
     return <> 
 
+        <Navbar createdShop={Boolean(shopId)}/>
         <Navbar/>
+
         
         {competitions.map((compitetion,Key)=>{
         <Navbar createdShop={props.createdShop}/>
