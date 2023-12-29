@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Comments from "./Comment";
-import post from "./Post.json";
+import style from "./Post.module.css"
 
-function Post()
+// import post from "./Post.json";
+
+function Post(props)
 {
+    let post=props.post;
     const [LikeButton,setLikeButton]=useState("Like");
     const [inputComment,setinputComment]=useState(0);
 
@@ -23,8 +26,8 @@ function Post()
     }
 
     return <div>
-        <div>
-            <img src={post.Logo}/>
+        <div className={style.ShopInfo}>
+            <img src={post.Logo} className={style.Logo}/>
             <p>{post.shop_Name}</p>
         </div>
             <p>{post.Content}</p>
@@ -35,7 +38,9 @@ function Post()
                         <img src={attachment}/>
                     </div>
         })}
-        <button onClick={()=>handleLikeClick()}>{LikeButton}</button>
+        {(props.ShowComments)?
+        <div>
+            <button onClick={()=>handleLikeClick()}>{LikeButton}</button>
         <button onClick={()=>handleCommentClick()}>Add Comment</button>
         {
             (inputComment)?<div>
@@ -44,6 +49,8 @@ function Post()
             </div>:null
         }
         <Comments comments={post.Comments}/>
+        </div>:null
+        }
     </div>
 }
 export default Post;
