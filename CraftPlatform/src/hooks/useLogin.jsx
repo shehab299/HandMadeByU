@@ -20,10 +20,12 @@ const useLogin = () => {
             const data = await response.json();
             console.log(data);
 
+            
             if(data.success) {
+                data.user.token = data.token;
                 setLoading(false);
                 dispatch({type: 'LOGIN', payload: data.user});
-                localStorage.setItem('token', JSON.stringify(data.token));
+                localStorage.setItem('user', JSON.stringify(data.user));
             }
             else{
                 setLoading(false);

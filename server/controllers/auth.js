@@ -25,16 +25,16 @@ const generateToken = (user) =>
 
 const validate = (Username,password) =>
 {    
-    if(password.length == 0)
+    if(!password)
         return false;
 
     return true;
 }
 
-const isUserExits = async (Username) =>
+const isUserExists = async (Username) =>
 {
     try{
-        let q = `SELECT COUNT(Username) FROM users WHERE email = '${email}'`;
+        let q = `SELECT COUNT("Username") FROM "Customer" WHERE "Username" = '${Username}'`;
         const usersNum = await dbMan.executeScaler(q);
 
         if(usersNum > 0)
@@ -44,6 +44,7 @@ const isUserExits = async (Username) =>
     }catch(error)
     {
         console.log(error);
+        return false;
     }
 }
 
@@ -53,7 +54,7 @@ const isUserExits = async (Username) =>
 
 const getAllUsers = async (req,res) => {
 
-    const q = 'SELECT * FROM public."Customer"';
+    const q = 'SELECT * FROM "Customer"';
 
     const result = await dbMan.executeQuery(q);
 
@@ -72,37 +73,54 @@ const getAllUsers = async (req,res) => {
 const registerUser = async (req,res) => {
 
     try{
-        const {Username,password} = req.body;
-        let resBody = {};
+        const {username,firstName,middleName,lastName,password,confirmPassword} = req.body;
 
-        if(!validateSignUp(Username,password))
-            resBody.message = "INVALID DATA";
+        let resBody = {success: false};
 
-        if(isUserExits(Username))
-            resBody.message = "User Already Exists";
+        if(!validate(username,password))
+        {
+            res.json(resBody);
+            res.end();
+            return;
+        }
+
+        const isExists = await isUserExists(username);
+        if(isExists){
+            resBody.success = false;
+        }
         else 
         {
-            q = `INSERT INTO users(Username,password) VALUES('${Username}','${password}')`;
+            q =  `INSERT INTO public."Customer"("Password", "Username", "First_Name", "Middle_Name", "Last_Name", is_seller)
+                VALUES ('${password}', '${username}', '${firstName}', '${middleName}', '${lastName}', false);`;
+            
             const insertUser = await dbMan.executeNonQuery(q);
 
             if(!insertUser)
             {
-                resBody.message = "SOMETHING WENT WRONG"
+                resBody.success = false;
             }
             else{
-                resBody.Username = Username;
-                resBody.message = "USER REGISTERD SUCCESSFULLY";
+                resBody.username = username;
                 
-                q = `SELECT user_id FROM users WHERE Username = ${Username}`;
+                q = `SELECT "CID" FROM "Customer" WHERE "Username" = '${username}'`;
                 const result = await dbMan.executeQuery(q);
-                const user_id = result[0]['user_id'];
-                
-                q = `INSERT INTO Cart (Customer_ID) VALUES (${user_id})`;
-                const createCart = await dbMan.executeNonQuery(q);
 
-                if(!createCart)
-                    resBody.message = "SOMETHING WENT WRONG WHILE CREATING CART";
+                if(!result){
+                    resBody.success = false;
+                }
+                else{
+                    const user_id = result[0]['CID'];
 
+                    q = `INSERT INTO "Cart"("Customer_ID") VALUES (${user_id})`;
+                    const createCart = await dbMan.executeNonQuery(q);
+    
+                    if(!createCart){
+                        resBody.success = false;
+                    }
+                    else{
+                        resBody.success = true;
+                    }
+                }
             }
         }
 
@@ -115,54 +133,66 @@ const registerUser = async (req,res) => {
 
 }
 
-const loginUser = async (req,res) => {
 
-    const {Username,password} = req.body;
-    resBody = {}
+const loginUser = async (req, res) => {
+    const { Username, password } = req.body;
+    let resBody = {}; // Added missing 'let' declaration
 
-
-    if(!validate(Username,password)){
-        resBody.message = "INVALID DATA";
+    if (!validate(Username, password)) {
         resBody.success = false;
+        resBody.msg = "Invalid Username or Password";
+        return res.status(400).json(resBody); // Return early on validation failure
     }
 
-    const isExists = await isUserExits(Username);
+    const isExists = await isUserExists(Username); // Corrected typo in function name
 
-    if(!isExists)
-    {
-        resBody.message = "Username Doesn't Exist";
+    if (!isExists) {
         resBody.success = false;
+        resBody.msg = "Invalid Username or Password";
+        return res.status(400).json(resBody); // Return early if user does not exist
     }
-    try{
-        const q = `SELECT user_id,Username,password FROM users WHERE Username = '${Username}'`;
+
+    try {
+        let q = `SELECT * FROM "Customer" WHERE "Username" = '${Username}'`;
         const result = await dbMan.executeQuery(q);
 
-        const user = {};
-        user.userId = result[0]['user_id']
-        user.Username = result[0]['Username'];
-        user.userPassword = result[0]['password'];
-
-        
-        if(password != user.userPassword){
-            resBody.message = "Password Doesn't Match Username";
+        if (result.length === 0) {
             resBody.success = false;
-        }
-        else{
-            resBody.success = true;
-            resBody.message = "LOGGED IN SUCCESSFULLY";
-            resBody.Username = user.Username;
-            resBody.token = generateToken(user);
+            resBody.msg = "User not found";
+            return res.status(404).json(resBody); // Return early if user not found
         }
 
-        if(resBody.success)
-            res.status(200).json(resBody);
-        else 
-            res.status(400).json(resBody);
+        const user = {
+            userId: result[0]['CID'],
+            Username: result[0]['Username'],
+            firstName: result[0]['first_name'],
+            middleName: result[0]['middle_name'],
+            lastName: result[0]['last_name'],
+        };
+
+        const storedPassword = result[0]['Password'];
+
+        if (password !== storedPassword) {
+            resBody.success = false;
+            resBody.msg = "Password is incorrect";
+            return res.status(401).json(resBody); // Return early on incorrect password
+        }
+
+        q = `SELECT "id" FROM "Cart" WHERE "Customer_ID" = ${user.userId}`;
+        const cartResult = await dbMan.executeQuery(q);
+
+        user.cartId = cartResult.length > 0 ? cartResult[0]['id'] : null;
+
+        resBody.success = true;
+        resBody.user = user; // Changed 'Username' to 'user'
+        resBody.token = generateToken(user);
+
+        res.status(200).json(resBody);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, msg: "Internal Server Error" });
     }
-    catch(error){
-        console.log(error);
-    }
-}
+};
 
 
 module.exports = {registerUser,loginUser,getAllUsers}
