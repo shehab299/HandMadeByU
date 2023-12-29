@@ -30,7 +30,7 @@ import AddPost from './pages/AddPost/index.jsx'
 const router = createBrowserRouter([
   {
     path : '/' ,
-    element: <Home/>,
+    element: <Home createdShop={false}/>,
     errorElement: <Error/>
   },
   {

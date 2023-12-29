@@ -35,8 +35,8 @@ function Post()
                         <img src={attachment}/>
                     </div>
         })}
-        <button onClick={()=>handleLikeClick()}>{LikeButton}</button>
-        <button onClick={()=>handleCommentClick()}>Add Comment</button>
+        <button className="blackBtn" onClick={()=>handleLikeClick()}>{LikeButton}</button>
+        <button className="blackBtn" onClick={()=>handleCommentClick()}>Add Comment</button>
         {
             (inputComment)?<div>
             <input type="text" placeholder="Add Comment"/>
