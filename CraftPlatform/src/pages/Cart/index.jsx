@@ -4,11 +4,28 @@
 import style from "./Cart.module.css"
 import Navbar from "../../components/Navbar";
 import CartData from "./Cart.json"
-import { useState } from "react";   
+import { useState , useEffect} from "react";   
 import { Link } from "react-router-dom";
+import {useAuthContext} from '../../hooks/useAuthContext' 
+import api from '../../services/api.js'
 
 function Cart(){
-    let productsInCart=CartData.Products;
+
+    const [loading, setLoading] = useState(true);
+    const [cartItems, setCartItems] = useState([]);
+    const data = useAuthContext();
+
+    const getCartItems = async () => {
+        const response = await api.getCartItems(data.cartId);
+        if(response.data){
+            setCartItems(response.data);
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {setLoading(true); getCartItems();} , [])
+
+    let productsInCart=cartItems;
     let totalPrice = 0;
     let shopsInCart=productsInCart.map(product=>product.SID)
     shopsInCart= [...new Set(shopsInCart)];
@@ -43,6 +60,9 @@ function Cart(){
         setShopsInCart([]);
     }
 
+    console.log(productsInCart);
+    console.log(shopsInCart);
+
     function reduceQuantity(prod)
     {
         prod.Quantity--;
@@ -72,6 +92,7 @@ function Cart(){
             {
                 ShopsInCart.map((shop)=>{                                   
                     let products=ProductsInCart.filter(product=>{
+                        console.log(product.SID,shop);
                         if(product.SID==shop)
                         return product
                     });
@@ -80,7 +101,7 @@ function Cart(){
                     {/* display Shop data   */}
                     <div className={style.ShopInfo}>
                     <img src={products[0].logo_URL} className={style.Logo}/>           
-                    <h2>{products[0].Shop_Name}</h2>
+                    <h2>{products[0].PName}</h2>
                     </div>
                     <div className={style.ShopItems}>
                         {    
@@ -88,8 +109,8 @@ function Cart(){
                         return <div key={product.PID} className={style.ProductInfo}>
                             <img src={product.image_URL} className={style.ProductImg}/>
                             <div>
-                                <p>{product.Name}</p>
-                                <p>{product.PDescription}</p>
+                                <p>{product.PName}</p>
+                                <p>{product.Description}</p>
                                 <div className={style.row}>
                                     <p>Quantity:</p>
                                     <button className={style.plusButton} onClick={()=>increaseQuantity(product)}>+</button>

@@ -126,7 +126,82 @@ const getParticipations = async (id) => {
     }
 }
 
+const getCompetions = async () => {
+  try{
+    const response = await fetch(`http://localhost:4000/api/comptetion`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+  catch(error){
+    console.error('Error fetching product:', error);
+    return null;
+  }
+}
 
-const api = {login,register,getProduct,getReviews,getShop,getShopProducts,getCompetion,getParticipations};
+const getProducts = async (id) => {
+
+  try{
+    const response = await fetch(`http://localhost:4000/api/product`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+  catch(error){
+    console.error('Error fetching product:', error);
+    return null;
+  }
+
+}
+
+const participate = async (id,user_id) => {
+  try{
+    const response = await fetch(`http://localhost:4000/api/comptetion/${id}/participate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json();
+    return data;
+  }
+  catch(error){
+    console.error('Error Participating', error);
+    return null;
+  }
+}
+
+const getCartItems = async (id) => {
+
+  try{
+    const response = await fetch(`http://localhost:4000/api/cart/${id}/cartItem`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+  catch(error){
+    console.error('Error fetching product:', error);
+    return null;
+  }
+}
+
+
+const api = {login,register,
+             getProduct,getReviews,getShop,getShopProducts,
+             getCompetion,getParticipations,getCompetions
+             ,getProducts,getCartItems};
 
 export default api;

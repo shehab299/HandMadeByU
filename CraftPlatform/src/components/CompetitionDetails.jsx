@@ -4,6 +4,16 @@
 import { useState } from "react";
 import styles from './CompetitionDetails.module.css'
 
+
+// YOU HAVE WHAT
+// YOU NEED
+// TO DO
+// HERE
+// GOOD LUCK
+
+
+
+
 function CompetitionDetails(props)
 {
     const [ButtonText,setButtonText]=useState("Participate");
@@ -19,7 +29,7 @@ function CompetitionDetails(props)
                 <h2>{props.competition.Title}</h2>
                 <p>Competition End Date: {props.competition.End_Date}</p>
             </div>
-            {(!props.IsSeller)?<button className="blackBtn" onClick={()=>handleParticipateClicked()}>{ButtonText}</button>:null}
+
         </div>
         <div>
             <p>{props.competition.Description}</p>
