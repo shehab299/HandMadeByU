@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
-import styles from "./ShopSettings.module.css"
+import styles from "./shopSettings.module.css"
 
 function ShopSettings() {
     const [shopName , setShopName] = useState('');
