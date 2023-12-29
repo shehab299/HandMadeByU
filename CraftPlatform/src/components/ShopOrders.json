@@ -8,20 +8,20 @@
             "Country":"Country1"
         },
         "Products":[
-        {
-        "productId": 1111,
-        "ProductName":"Product1",
-        "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
-        "Price":100.0,
-        "Quantity":2
-        },
-        {
-            "productId": 2222,
-            "ProductName":"Product2",
-            "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
-            "Price":100.0,
-            "Quantity":2
-        }
+            {
+                "productId": 1111,
+                "ProductName":"Product1",
+                "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+                "Price":100.0,
+                "Quantity":2
+            },
+            {
+                "productId": 2222,
+                "ProductName":"Product2",
+                "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
+                "Price":100.0,
+                "Quantity":2
+            }
         ]
     },
     {
