@@ -22,6 +22,8 @@ import ConfirmOrder from './pages/ConfirmOrder/index.jsx'
 import AddAddress from './pages/AddAddress/index.jsx'
 import { AuthContextProvider } from './context/authContext.jsx'
 import Dashboard from './pages/Dashboard/index.jsx'
+import EditProduct from './pages/EditProduct/index.jsx'
+import EditCompetition from './pages/EditCompetition/index.jsx'
 
 const router = createBrowserRouter([
   {
@@ -117,7 +119,15 @@ const router = createBrowserRouter([
   {
     path : '/Dashboard' ,
     element:<Dashboard/>,
-  }
+  },
+  {
+    path : '/EditProduct' ,
+    element:<EditProduct/>,
+  },
+  {
+    path : '/EditCompetition' ,
+    element:<EditCompetition/>,
+  },
 ])
 
 
