@@ -1,41 +1,41 @@
 .container{
+    display: flex;
     height: 100vh;
-    display: grid;
-    grid-template: 1fr 5fr/ 1fr 5fr;
-    grid-template-areas:
-    "sidebar navbar"
-    "sidebar mainContent";
+    scroll-behavior: smooth;
+    
 }
 
 .sidebar{
-    grid-area: sidebar;
     background: #E5EAFA;
    
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    padding: 5rem 25px;
+    position: fixed;
+
+    padding: 5rem 4rem;
     gap: 2rem;
 
     height: 100vh;
-    position: sticky;
-    top: 0;
-    bottom: 0;
 }
 
 .sidebar button {
+    min-width: max-content;
     background: #E5EAFA;
     border: none;
     font-size: 1rem;
 }
 
 .mainContent{
-    grid-area: mainContent;
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .navbar{
-    grid-area: navbar;
+   position: sticky;
+   top: 0;
+   right: 0;
+   left: 0;
 }

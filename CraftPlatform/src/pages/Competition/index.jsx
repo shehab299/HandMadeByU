@@ -5,7 +5,8 @@ import competition from "./Competition.json"
 import Navbar from "../../components/Navbar";
 import CompetitionDetails from '../../components/CompetitionDetails';
 import style from "./Competition.module.css";
-function Compitetion()
+
+function Compitetion(props)
 {
     let Participants=competition.Participant
     
@@ -19,11 +20,11 @@ function Compitetion()
     <div className={style.ShopInfo}>
         <img src={competition.Logo_URL} className={style.Logo}/>
         <h3>{competition.Shop_Name}</h3>
-        <button>follow</button>
+        {!props.IsSeller && <button>follow</button>}
     </div>
 
     {/* Competition details */}
-    <CompetitionDetails competition={competition} />
+    <CompetitionDetails competition={competition} IsSeller={props.IsSeller} />
 
     </div>
 
@@ -35,7 +36,6 @@ function Compitetion()
                 <FontAwesomeIcon icon={faUser} className={style.UserIcon}/>
                 <div>
                      <p>{participant.CustomerName}</p>
-                     <p>Response</p>
                 </div>
             </div>
     })}

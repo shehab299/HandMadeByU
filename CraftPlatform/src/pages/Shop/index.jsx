@@ -2,23 +2,8 @@
 import shop from "./Shop.json"
 import style from "./Shop.module.css"
 import Navbar from "../../components/Navbar";
-import Products from "../../components/Product";
-
-const ShopInfo=(props)=>{
-    return <>
-        <img src={shop.Banner_URL} className={style.Banner}/>
-        <div className={style.ShopInfo}>
-            <img src={shop.logo_URL} className={style.Logo}/>
-            <div >
-                <h1>{shop.Shop_Name}</h1>
-                <h3>{shop.Description}</h3>
-                {(!props.IsSeller)?<button className={style.Buttons}>Follow  &#10084;</button>:null}
-            </div>
-            {(props.IsSeller) ? <button className={style.EditPhoto}>&#x1F4F7;</button>:null}
-        </div>
-        {(props.IsSeller)? <button className={style.Buttons}>EditBanner &#x1F4F7;</button>:null}
-    </>
-}
+import Products from "../../components/Products";
+import { useState } from "react";
 
 const Categories=(props)=>
 {
@@ -50,12 +35,31 @@ function Shop(props)
     let thisProducts=shop.Products;
     let categories=shop.Categories;
 
+    const [FollowButtonText,setFollowButtonText]=useState("Follow");
+
+    function handleFollowClick(e)
+    {
+        if(FollowButtonText=="Follow")
+        setFollowButtonText("Unfollow")
+        else
+        setFollowButtonText("Follow")
+    }
+
     return <>
     <Navbar/>
-    <ShopInfo IsSeller={props.IsSeller}/>
+
+    <img src={shop.Banner_URL} className={style.Banner}/>
+        <div className={style.ShopInfo}>
+            <img src={shop.logo_URL} className={style.Logo}/>
+            <div >
+                <h1>{shop.Shop_Name}</h1>
+                <h3>{shop.Description}</h3>
+                {(!props.IsSeller)?<button className={style.Buttons} onClick={()=>handleFollowClick()}>{FollowButtonText}{(FollowButtonText=="Follow")?<span>&#10084;</span>:null}</button>:null}
+            </div>
+        </div>
     <div className={style.Container}>
     <Categories Categories={categories} IsSeller={props.IsSeller}/>
-    <Products Products={thisProducts}/>
+    <Products Products={thisProducts} IsSeller={props.IsSeller}/>
     </div>
     </>
 }

@@ -67,8 +67,21 @@ const router = createBrowserRouter([
   },
   {
     path : '/shop-seller',
-    element:<Shop IsSeller={1}/>,
+    element:<Shop IsSeller={1}/>
   },
+  {
+    path : '/Competition',
+    element:<Competition IsSeller={1}/>,
+  },
+  {
+    path : '/ConfirmOrder',
+    element:<ConfirmOrder/>,
+  },
+  {
+    path : '/AddAddress',
+    element:<AddAddress/>,
+  },
+  
   {
     path : '/Cart' ,
     element:<Cart CID={1234}/>,
