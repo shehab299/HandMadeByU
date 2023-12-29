@@ -9,9 +9,9 @@
             "PID": 1234,
             "Name": "Product 1",
             "PDescription": "Description of Product 1",
-            "Price": 20.99,
+            "Price": 20.0,
             "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
-            "Quantity":1
+            "Quantity":2
             },
             {
             "SID":1,
@@ -31,7 +31,7 @@
             "PID": 2345,
             "Name": "Product 2",
             "PDescription": "Description of Product 2",
-            "Price": 14.09,
+            "Price": 14.00,
             "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987",
             "Quantity":1
             }

@@ -89,6 +89,3 @@ const Categories=(props)=>
     </div>
 }
 
-
-
-export default Shop;

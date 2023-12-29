@@ -8,7 +8,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../services/api.js"
 import style from "./Competition.module.css";
-function Compitetion()
+
+function Compitetion(props)
 {
 
     const {id} = useParams();
@@ -45,13 +46,16 @@ function Compitetion()
     {/* display Shop Info */}
     <div>
     <div className={style.ShopInfo}>
+        <img src={competition.Logo_URL} className={style.Logo}/>
+        <h3>{competition.Shop_Name}</h3>
+        {!props.IsSeller && <button>follow</button>}
         <img src={compete.Logo_URL} className={style.Logo}/>
         <h3>{compete.Name}</h3>
         <button>follow</button>
     </div>
 
     {/* Competition details */}
-    <CompetitionDetails competition={compete} />
+    <CompetitionDetails competition={compete} IsSeller={props.IsSeller} />
 
     </div>
 
