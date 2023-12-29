@@ -1,47 +1,47 @@
 {
-    "Competitions":
-    [
-      {
-        "ID":1,
-        "Title":"Title1",
-        "Description":"decsription1",
-        "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
-        "Shop_Name":"Shop1",
-        "EndTime":"1/1/2023"
-      },        
-      {
-        "ID":2,
-        "Title":"Title2",
-        "Description":"decsription2",
-        "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
-        "Shop_Name":"Shop2",
-        "EndTime":"1/1/2023"
-      },        
-      {
-        "ID":3,
-        "Title":"Title3",
-        "Description":"decsription3",
-        "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
-        "Shop_Name":"Shop3",
-        "EndTime":"1/1/2023"
-      }     
-    ],
-    "Products":
-    [
-      {
-        "Name": "Product 1",
-        "Price": 9.99,
-        "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987"
-      },
-      {
-        "Name": "Product 2",
-        "Price": 14.99,
-        "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987"
-      },
-      {
-        "Name": "Product 3",
-        "Price": 10.00,
-        "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987"
-      }
-    ]
+  "Competitions":
+  [
+    {
+      "ID":1,
+      "Title":"Title1",
+      "Description":"decsription1",
+      "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+      "Shop_Name":"Shop1",
+      "EndTime":"1/1/2023"
+    },        
+    {
+      "ID":2,
+      "Title":"Title2",
+      "Description":"decsription2",
+      "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+      "Shop_Name":"Shop2",
+      "EndTime":"1/1/2023"
+    },        
+    {
+      "ID":3,
+      "Title":"Title3",
+      "Description":"decsription3",
+      "Logo_URL":"https://static.vecteezy.com/system/resources/thumbnails/006/581/544/small/label-or-logo-with-lettering-hand-made-flat-illustrations-modern-and-stylish-badge-thin-line-inscription-handmade-made-with-love-craft-product-on-white-vector.jpg",
+      "Shop_Name":"Shop3",
+      "EndTime":"1/1/2023"
+    }     
+  ],
+  "Products":
+  [
+    {
+      "Name": "Product 1",
+      "Price": 9.99,
+      "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987"
+    },
+    {
+      "Name": "Product 2",
+      "Price": 14.99,
+      "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987"
+    },
+    {
+      "Name": "Product 3",
+      "Price": 10.00,
+      "image_URL":"https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/45/189953/1.jpg?8987"
+    }
+  ]
 }

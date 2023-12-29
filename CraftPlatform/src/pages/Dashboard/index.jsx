@@ -29,6 +29,7 @@ export default function Dashboard() {
             <button onClick={()=>setDisplay('product')}>Products</button>
             <button onClick={()=>setDisplay('competition')}>Competitions</button>
             <button onClick={()=>setDisplay('orders')}>Orders</button>
+            <button onClick={()=>setDisplay('posts')}>Posts</button>
             <Link to={'/'}><button>Home</button></Link>
         </div>
         <div className={styles.mainContent}>
@@ -36,12 +37,15 @@ export default function Dashboard() {
             <ShopSettings /> : 
             (display=='product' ? 
             <div>
-                <Products Products={thisProducts}/>
+                <Products isSeller={true} sellerView={true} Products={thisProducts}/>
                 <Link to={'/AddProduct'}><button className='blackBtn'>Add Product</button></Link>
             </div> : 
             (display=='competition' ? 
-            <ShopCompetitions /> : 
-            <ShopOrders/>
+            <ShopCompetitions /> : ( display=='orders' ?
+            <ShopOrders/> : 
+            <div>
+                <Link to={'/AddPost'}><button className='blackBtn'>Add post</button></Link>
+            </div>)
             )) }
         </div>
     </>

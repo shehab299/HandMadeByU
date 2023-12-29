@@ -29,7 +29,7 @@ function CompetitionDetails(props)
                 <h2>{props.competition.Title}</h2>
                 <p>Competition End Date: {props.competition.End_Date}</p>
             </div>
-            {(!props.IsSeller)?<button onClick={()=>handleParticipateClicked()}></button>:null}
+
         </div>
         <div>
             <p>{props.competition.Description}</p>

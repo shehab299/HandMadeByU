@@ -25,11 +25,12 @@ import { AuthContextProvider } from './context/authContext.jsx'
 import Dashboard from './pages/Dashboard/index.jsx'
 import EditProduct from './pages/EditProduct/index.jsx'
 import EditCompetition from './pages/EditCompetition/index.jsx'
+import AddPost from './pages/AddPost/index.jsx'
 
 const router = createBrowserRouter([
   {
     path : '/' ,
-    element: <Home/>,
+    element: <Home createdShop={false}/>,
     errorElement: <Error/>
   },
   {
@@ -128,6 +129,10 @@ const router = createBrowserRouter([
   {
     path : '/EditCompetition' ,
     element:<EditCompetition/>,
+  },
+  {
+    path : '/AddPost' ,
+    element:<AddPost/>,
   },
 ])
 
