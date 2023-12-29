@@ -5,10 +5,10 @@ import Navbar from "../../components/Navbar";
 import style from './Home.module.css';
 
 
-function Home()
+function Home(props)
 {
     return <> 
-        <Navbar/>
+        <Navbar createdShop={props.createdShop}/>
         <div className={style.Container}>
         <div>
             <h1>Competitions</h1>
