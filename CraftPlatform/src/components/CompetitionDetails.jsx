@@ -19,7 +19,7 @@ function CompetitionDetails(props)
                 <h2>{props.competition.Title}</h2>
                 <p>Competition End Date: {props.competition.End_Date}</p>
             </div>
-            {(!props.IsSeller)?<button onClick={()=>handleParticipateClicked()}>{ButtonText}</button>:null}
+            {(!props.IsSeller)?<button className="blackBtn" onClick={()=>handleParticipateClicked()}>{ButtonText}</button>:null}
         </div>
         <div>
             <p>{props.competition.Description}</p>

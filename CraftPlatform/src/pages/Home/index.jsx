@@ -3,7 +3,7 @@ import Data from "./FollowedShop.json";
 import CompetitionDetails from "../../components/CompetitionDetails";
 import Navbar from "../../components/Navbar";
 import style from './Home.module.css';
-
+import ShopPosts from "../../components/ShopPosts";
 
 function Home(props)
 {
@@ -22,6 +22,7 @@ function Home(props)
         </div>
         < Products Products={Data.Products}/>
         </div>
+        <ShopPosts/>
     </>
 }
 
