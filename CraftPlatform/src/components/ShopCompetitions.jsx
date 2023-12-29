@@ -6,7 +6,7 @@ export default function ShopCompetitions() {
     return <>
     {
         Competitions.map((competition,index)=>{
-            return <CompetitionDetails competition={competition} key={index} IsSeller={1}/>
+            {/* return <Link to={''}></Link><CompetitionDetails competition={competition} key={index} IsSeller={1}/> */}
         })
     }
     <button> <Link to={'/AddComptetion'}> Add Competition </Link></button>

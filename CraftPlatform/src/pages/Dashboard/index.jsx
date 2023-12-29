@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 import Products from "../../components/Products";
 import ShopOrders from '../../components/ShopOrders';
+import ShopCompetitions from '../../components/ShopCompetitions';
 
 //pages
 import ShopSettings from '../ShopSettings'
@@ -42,8 +43,7 @@ export default function Dashboard() {
             </div> : 
             (display=='competition' ? 
             <div>
-                <Link to={'/AddComptetion'}><button>Add competition</button></Link>
-                <button>Edit competition</button>
+               <ShopCompetitions />
             </div> : 
             <div>
                 <ShopOrders/>
