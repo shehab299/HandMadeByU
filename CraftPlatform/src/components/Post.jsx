@@ -5,6 +5,7 @@ import post from "./Post.json";
 function Post()
 {
     const [LikeButton,setLikeButton]=useState("Like");
+    const [inputComment,setinputComment]=useState(0);
 
     function handleLikeClick()
     {
@@ -13,9 +14,14 @@ function Post()
 
     function handleCommentClick()
     {
-
+        setinputComment(1);
     }
     
+    function hadleAddClick()
+    {
+        setinputComment(0);
+    }
+
     return <div>
         <div>
             <img src={post.Logo}/>
@@ -31,6 +37,12 @@ function Post()
         })}
         <button onClick={()=>handleLikeClick()}>{LikeButton}</button>
         <button onClick={()=>handleCommentClick()}>Add Comment</button>
+        {
+            (inputComment)?<div>
+            <input type="text" placeholder="Add Comment"/>
+            <button onClick={()=>hadleAddClick()}>Add</button>
+            </div>:null
+        }
         <Comments comments={post.Comments}/>
     </div>
 }
