@@ -8,7 +8,7 @@ import Post from "../../components/Post";
 function Home()
 {
     return <> 
-        {/* <Navbar/>
+        <Navbar/>
         <div className={style.Container}>
         <div>
             <h1>Competitions</h1>
@@ -21,7 +21,7 @@ function Home()
         </div>:<p>No Competitions yet</p>}
         </div>
         < Products Products={Data.Products}/>
-        </div> */}
+        </div>
         <Post/>
     </>
 }

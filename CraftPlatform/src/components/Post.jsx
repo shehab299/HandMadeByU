@@ -6,10 +6,16 @@ function Post()
 {
     const [LikeButton,setLikeButton]=useState("Like");
 
-    function handleClick()
+    function handleLikeClick()
     {
         (LikeButton=="Like")?setLikeButton("Liked"):setLikeButton("Like")
     }
+
+    function handleCommentClick()
+    {
+
+    }
+    
     return <div>
         <div>
             <img src={post.Logo}/>
@@ -23,7 +29,8 @@ function Post()
                         <img src={attachment}/>
                     </div>
         })}
-        <button onClick={()=>handleClick()}>{LikeButton}</button>
+        <button onClick={()=>handleLikeClick()}>{LikeButton}</button>
+        <button onClick={()=>handleCommentClick()}>Add Comment</button>
         <Comments comments={post.Comments}/>
     </div>
 }
