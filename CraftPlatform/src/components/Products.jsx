@@ -18,7 +18,8 @@ const Products=(props)=>{
                 <p>Product price: {Product.Price} $</p>
                 
             </div>
-            <Link to={'/EditProduct'}><button className='blackBtn'>Edit</button></Link>
+            
+            {props.sellerView && <Link to={'/EditProduct'}><button className='blackBtn'>Edit</button></Link>}
             </div>
         })}
         </div>

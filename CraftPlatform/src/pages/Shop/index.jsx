@@ -59,7 +59,7 @@ function Shop(props)
         </div>
     <div className={style.Container}>
     <Categories Categories={categories} IsSeller={props.IsSeller}/>
-    <Products Products={thisProducts} IsSeller={props.IsSeller}/>
+    <Products sellerView={false} Products={thisProducts} IsSeller={props.IsSeller}/>
     </div>
     </>
 }

@@ -36,7 +36,7 @@ export default function Dashboard() {
             <ShopSettings /> : 
             (display=='product' ? 
             <div>
-                <Products Products={thisProducts}/>
+                <Products isSeller={true} sellerView={true} Products={thisProducts}/>
                 <Link to={'/AddProduct'}><button className='blackBtn'>Add Product</button></Link>
             </div> : 
             (display=='competition' ? 
