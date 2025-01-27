@@ -1,6 +1,7 @@
+import { BrowserRouter, Route, Routes } from "react-router";
+
 import Login from "@pages/Login";
 import Signup from "@pages/Signup";
-import { BrowserRouter, Route, Routes } from "react-router";
 
 function AppRoutes() {
   return (

@@ -8,6 +8,11 @@ const GlobalStyles = createGlobalStyle`
   &.dark-mode {
    
   }
+  --color-text: #1a202c;
+  --color-error: #EF5350;
+  --color-input-border: rgb(230, 227, 227);
+  --inputfield-color: #f3f4f6ff;
+  --themecolor-secondary: #00bdd6ff;
 }
 
 input:-webkit-autofill,
@@ -39,6 +44,7 @@ select:-webkit-autofill:focus {
 
 body {
   font-family: "Poppins", sans-serif;
+  color: var(--color-text);
   background-color: var(--color-background);
 
   transition: color 0.3s, background-color 0.3s;
