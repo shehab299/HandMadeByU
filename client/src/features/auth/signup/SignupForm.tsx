@@ -9,7 +9,9 @@ import { validation } from "./schema/validation.ts";
 import InputField from "@components/InputField";
 import Button from "@components/Button";
 import SpinnerMini from "@components/SpinnerMini";
+
 import { inputsData } from "./inputsData";
+import { useSignup } from "./hooks/useSignup.tsx";
 
 type signupFormInputs = {
   email: string;
@@ -76,12 +78,13 @@ function SignupForm() {
     mode: "onTouched",
   });
 
+  const { signup, isPending } = useSignup();
+
   const onSubmit: SubmitHandler<signupFormInputs> = async (data) => {
-    console.log("Form submitted successfully: ", data);
-    // login(data);
+    const { confirmPassword, ...credentials } = data;
+    signup(credentials);
   };
 
-  console.log(errors);
   return (
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -131,8 +134,8 @@ function SignupForm() {
           })}
         </div>
         <div>
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? <SpinnerMini /> : "Signup"}
+          <Button type="submit" disabled={isSubmitting || isPending}>
+            {isSubmitting || isPending ? <SpinnerMini /> : "Signup"}
           </Button>
           <p>
             Already have an account? <NavLink to="/login">Login</NavLink>

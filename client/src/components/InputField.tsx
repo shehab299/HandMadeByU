@@ -36,12 +36,20 @@ type Props = {
   validate?: (value: string) => string | undefined;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-function InputField({ id, error, type, register, label, ...props }: Props) {
+function InputField({
+  id,
+  error,
+  type,
+  register,
+  validate,
+  label,
+  ...props
+}: Props) {
   return (
     <Container $error={!!error}>
       <Label htmlFor={id}>{label || type}</Label>
       <input
-        {...register(id!)}
+        {...register(id!, { validate })}
         {...props}
         type={type}
         id={id}

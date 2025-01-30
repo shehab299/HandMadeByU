@@ -61,7 +61,6 @@ function LoginForm() {
   const { login, isPending } = useLogin();
 
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
-    console.log("Form submitted successfully: ", data);
     login(data);
   };
 
@@ -70,14 +69,14 @@ function LoginForm() {
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <div>
           <InputField
-            defaultValue="asmaa@gmail.com"
+            defaultValue="test1@gmail.com"
             error={errors?.email?.message}
             type="email"
             id="email"
             register={register}
           />
           <InputField
-            defaultValue="123456"
+            defaultValue="12345"
             register={register}
             error={errors?.password?.message}
             type="password"

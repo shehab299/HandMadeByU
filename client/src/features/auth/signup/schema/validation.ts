@@ -12,7 +12,10 @@ const validation = yup.object({
     .oneOf([yup.ref("password")], "Passwords do not match"),
   firstName: yup.string().required("First name is required"),
   lastName: yup.string().required("Last name is required"),
-  username: yup.string().required("Username is required"),
+  username: yup
+    .string()
+    .min(6, "Username must be at least 6 characters long")
+    .required("Username is required"),
   age: yup
     .number()
     .typeError("Please enter your age")
