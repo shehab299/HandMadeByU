@@ -47,7 +47,6 @@ services:
       DATABASE_URL: postgres://ROOT:1234@database:5432/ROOT
     volumes:
       - ./server:/app
-      - /app/node_modules
     ports:
       - "3000:3000"
     depends_on:

@@ -3,4 +3,4 @@ const corOptions = {
     methods: ['GET, POST, PUT, DELETE, OPTIONS'],
 }
 
-export default corOptions;
+module.exports = corOptions;

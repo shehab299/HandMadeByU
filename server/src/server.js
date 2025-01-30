@@ -1,8 +1,23 @@
-import app from "./app.js";
-import "./config/env.js";
+require('./config/env.js');
 
-const PORT = process.env.PORT || 3000;
+const app = require('./app.js');
+const db = require("./models");
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+
+const asyncListen = require('./utils/asyncListen.js');
+
+
+async function main(){
+    await db.sequelize.authenticate();
+    await db.sequelize.sync();
+    console.log('Database is connected');
+
+    await asyncListen(app, process.env.PORT || 3000);
+    console.log(`Server is running on port ${process.env.PORT || 3000}`);
+}
+
+
+
+main().catch((err) => {
+    console.error(err);
 });

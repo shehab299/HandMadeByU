@@ -1,4 +1,4 @@
-import AppError from "../errors/AppError.js";
+const AppError = require("../errors/AppError.js");
 
 function notFoundHandler(req, res, next) {
     res.status(404).json({
@@ -14,9 +14,9 @@ function errorLogger(err,req,res,next) {
 
 function errorHandler(err,req,res,next) {
 
-    let statusCode = 500;
-    let status = "error";
-    let message = "Internal Server Error";
+    let statusCode = err.statusCode || 500;
+    let status = err.status;
+    let message = err.message || "Something went wrong";
 
     res.status(statusCode).json({
         status,
@@ -24,4 +24,4 @@ function errorHandler(err,req,res,next) {
     });
 }
 
-export { notFoundHandler, errorLogger, errorHandler };
+module.exports = { notFoundHandler, errorLogger, errorHandler };

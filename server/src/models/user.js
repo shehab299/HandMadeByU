@@ -1,5 +1,5 @@
-
-import { Model, DataTypes } from 'sequelize';
+const { Model, DataTypes } = require('sequelize');
+const bcrypt = require("bcryptjs");
 
 const UserSchema = {
 
@@ -14,39 +14,27 @@ const UserSchema = {
     type: DataTypes.STRING,
     allowNull: false,
     min: 2,
-    max: 50,
-    validate: {
-      isAlpha: true,
-    }
+    max: 50
   },
   
   middleName: {
     type: DataTypes.STRING,
     allowNull: true,
     min: 2,
-    max: 50,
-    validate: {
-      isAlpha: true,
-    }
+    max: 50
   },
   
   lastName: {
     type: DataTypes.STRING,
     allowNull: false,
     min: 2,
-    max: 50,
-    validate: {
-      isAlpha: true,
-    }
+    max: 50
   },
 
   email: {
     type: DataTypes.STRING,
     unique: true,
-    allowNull: false,
-    validate: {
-      isEmail: true,
-    },
+    allowNull: false
   },
 
   username: {
@@ -54,11 +42,7 @@ const UserSchema = {
     unique: true,
     allowNull: false,
     min: 6,
-    max: 20,  
-    validate: {
-      isAlphanumeric: true,
-      is: /^[a-zA-Z][a-zA-Z0-9_]*$/,
-    }
+    max: 20
   },
 
   password: {
@@ -75,7 +59,7 @@ const UserSchema = {
 
 };
 
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
 
   class User extends Model {
     static associate(models) 

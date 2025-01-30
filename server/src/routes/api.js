@@ -1,9 +1,12 @@
-import express from 'express';
+const express = require('express');
+
+// Begin Routes
+const authRouter = require('./auth.route');
+// End Routes
 
 const apiRouter = express.Router();
 
-// Begin Routes
+apiRouter.use('/auth', authRouter);
 
-// End Routes
+module.exports = apiRouter;
 
-export default apiRouter;
