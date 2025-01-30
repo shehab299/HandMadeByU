@@ -15,12 +15,12 @@ const authRouter = express.Router();
  * @apiGroup Auth
  * 
  * @apiParam {String} firstName User's first name
- * @apiParam {String} middleName User's middle name
+ * @apiParam {String} middleName User's middle name (not required)
  * @apiParam {String} lastName User's last name
  * @apiParam {String} email User's email address
  * @apiParam {String} username User's username
  * @apiParam {String} password User's password
- * @apiParam {Number} age User's age
+ * @apiParam {Number} age User's age 
  * 
  * @apiSuccess {Object} user User object containing user data
  * @apiSuccess {String} status Response status

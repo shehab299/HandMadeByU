@@ -55,16 +55,14 @@ const UserSchema = {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-
-
 };
 
 module.exports = (sequelize, DataTypes) => {
 
   class User extends Model {
     static associate(models) 
-    {
-      // Define Associations
+    {    
+      User.hasMany(models.Shop, { foreignKey: 'userId', as: 'shops'});
     }
   }
 
@@ -79,13 +77,6 @@ module.exports = (sequelize, DataTypes) => {
     if (user.changed('password')) {
       user.password = await bcrypt.hash(user.password, 10);
     }
-
-    
-
-
-
-
-
 
   });
 

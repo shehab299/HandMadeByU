@@ -68,6 +68,8 @@ async function register(req, res, next){
         age
     });
 
+    user.password = undefined;
+
     res.status(201).json({
         status: 'success',
         data: {
