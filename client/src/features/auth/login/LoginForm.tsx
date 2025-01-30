@@ -10,6 +10,8 @@ import InputField from "@components/InputField";
 import Button from "@components/Button";
 import SpinnerMini from "@components/SpinnerMini";
 
+import { useLogin } from "./hooks/useLogin";
+
 type LoginFormInputs = {
   email: string;
   password: string;
@@ -56,8 +58,11 @@ function LoginForm() {
     mode: "onTouched",
   });
 
+  const { login, isPending } = useLogin();
+
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     console.log("Form submitted successfully: ", data);
+    login(data);
   };
 
   return (
@@ -65,19 +70,23 @@ function LoginForm() {
       <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
         <div>
           <InputField
+            defaultValue="asmaa@gmail.com"
             error={errors?.email?.message}
             type="email"
+            id="email"
             register={register}
           />
           <InputField
+            defaultValue="123456"
             register={register}
             error={errors?.password?.message}
             type="password"
+            id="password"
           />
         </div>
         <div>
-          <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? <SpinnerMini /> : "Login"}
+          <Button type="submit" disabled={isSubmitting || isPending}>
+            {isSubmitting || isPending ? <SpinnerMini /> : "Login"}
           </Button>
           <p>
             Don't have an account? <NavLink to="/signup">Sign up</NavLink>

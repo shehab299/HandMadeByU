@@ -48,7 +48,7 @@ services:
     volumes:
       - ./server:/app
     ports:
-      - "3000:3000"
+      - "5000:3000"
     depends_on:
       - database
     networks:

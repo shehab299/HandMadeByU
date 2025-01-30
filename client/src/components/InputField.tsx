@@ -29,16 +29,25 @@ const Error = styled.p`
 `;
 
 type Props = {
+  id: string;
   error: string | undefined;
-  type: "password" | "email";
   register: UseFormRegister<any>;
-};
+  label?: string;
+  validate?: (value: string) => string | undefined;
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
-function InputField({ error, type, register }: Props) {
+function InputField({ id, error, type, register, label, ...props }: Props) {
   return (
     <Container $error={!!error}>
-      <Label htmlFor={type}>{type}</Label>
-      <input {...register(type)} type={type} id={type} aria-invalid={!!error} />
+      <Label htmlFor={id}>{label || type}</Label>
+      <input
+        {...register(id!)}
+        {...props}
+        type={type}
+        id={id}
+        aria-invalid={!!error}
+        autoComplete="on"
+      />
       {error && <Error>{error}</Error>}
     </Container>
   );
