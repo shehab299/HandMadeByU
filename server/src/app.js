@@ -9,16 +9,14 @@ const {notFoundHandler, errorLogger, errorHandler} = require('./middleware/error
 
 // Configurations
 const corOptions = require('./config/cors');
-const swaggerDocs = require('./config/swagger');
-const swaggerUI = require('swagger-ui-express');
+
 
 // Routes
 const apiRouter = require('./routes/api.js');
 
 const app = express();
 
-// API Documentation
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 
 
 if(process.env.NODE_ENV === 'development') 

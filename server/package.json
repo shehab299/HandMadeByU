@@ -10,15 +10,14 @@
     "morgan": "^1.10.0",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.5",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "sequelize": "^6.37.5"
   },
   "name": "server",
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "dev": "npx nodemon src/server.js"
+    "dev": "npx nodemon src/server.js",
+    "apidoc": "apidoc -i src/routes -o public/apidoc"
   },
   "type": "commonjs",
   "keywords": [],
@@ -26,6 +25,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "apidoc": "^1.2.0",
     "nodemon": "^3.1.9"
   }
 }
