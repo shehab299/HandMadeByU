@@ -80,6 +80,9 @@ module.exports = (sequelize, DataTypes) => {
 
   });
 
+  User.beforeUpdate((user, options) => {
+    user.setDataValue('id', user._previousDataValues.id);
+  });
 
   return User;
 };

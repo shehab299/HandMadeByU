@@ -17,7 +17,7 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "npx nodemon src/server.js",
-    "apidoc": "apidoc -i src/routes -o public/apidoc"
+    "apidoc": "apidoc -i docs -o public/apidoc"
   },
   "type": "commonjs",
   "keywords": [],

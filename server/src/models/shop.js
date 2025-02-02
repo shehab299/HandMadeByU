@@ -49,6 +49,11 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Shop',
   });
+
+  Shop.beforeUpdate((shop, options) => {
+    shop.setDataValue('userId', shop._previousDataValues.userId);
+    shop.setDataValue('id', shop._previousDataValues.id);
+  });
   
   
   return Shop;
