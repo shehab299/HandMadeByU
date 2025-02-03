@@ -3,13 +3,13 @@
  * @apiName Signup
  * @apiGroup Auth
  * 
- * @apiParam {String} firstName User's first name
- * @apiParam {String} middleName User's middle name (not required)
- * @apiParam {String} lastName User's last name
- * @apiParam {String} email User's email address
- * @apiParam {String} username User's username
- * @apiParam {String} password User's password
- * @apiParam {Number} age User's age 
+ * @apiBody {String} firstName User's first name
+ * @apiBody {String} middleName User's middle name (not required)
+ * @apiBody {String} lastName User's last name
+ * @apiBody {String} email User's email address
+ * @apiBody {String} username User's username
+ * @apiBody {String} password User's password
+ * @apiBody {Number} age User's age 
  * 
  * @apiSuccess {Object} user User object containing user data
  * @apiSuccess {String} status Response status
@@ -51,8 +51,8 @@ authRouter.post('/signup', validate(signupSchema), register);
  * @apiName Login
  * @apiGroup Auth
  * 
- * @apiParam {String} email User's email address
- * @apiParam {String} password User's password
+ * @apiBody {String} email User's email address
+ * @apiBody {String} password User's password
  * 
  * @apiSuccess {String} token JWT token for the user
  * @apiSuccess {String} status Response status

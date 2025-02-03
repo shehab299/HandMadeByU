@@ -7,11 +7,11 @@
  * @apiHeader {String} Authorization User's access token.
  * 
  * @apiParam {String} shopId Shop's unique ID.
- * @apiParam {String} name Product name (min: 2, max: 100 characters).
- * @apiParam {Number} price Product price (min: 0).
- * @apiParam {String} description Product description.
- * @apiParam {Number} quantity Product quantity (min: 0).
- * @apiParam {String} [image] Product image URL.
+ * @apiBody {String} name Product name (min: 2, max: 100 characters).
+ * @apiBody {Number} price Product price (min: 0).
+ * @apiBody {String} description Product description.
+ * @apiBody {Number} quantity Product quantity (min: 0).
+ * @apiBody {String} [image] Product image URL.
  *
  * @apiSuccess {String} status Request status.
  * @apiSuccess {Object} data Product data.
@@ -118,11 +118,12 @@
  * 
  * @apiParam {String} shopId Shop's unique ID.
  * @apiParam {String} productId Product's unique ID.
- * @apiParam {String} [name] Updated product name (min: 2, max: 100 characters).
- * @apiParam {Number} [price] Updated product price (min: 0).
- * @apiParam {String} [description] Updated product description.
- * @apiParam {Number} [quantity] Updated product quantity (min: 0).
- * @apiParam {String} [image] Updated product image URL.
+ * 
+ * @apiBody {String} [name] Updated product name (min: 2, max: 100 characters).
+ * @apiBody {Number} [price] Updated product price (min: 0).
+ * @apiBody {String} [description] Updated product description.
+ * @apiBody {Number} [quantity] Updated product quantity (min: 0).
+ * @apiBody {String} [image] Updated product image URL.
  *
  * @apiSuccess {String} status Request status.
  * @apiSuccess {Object} data Updated product data.

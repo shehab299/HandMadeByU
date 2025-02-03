@@ -63,6 +63,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) 
     {    
       User.hasMany(models.Shop, { foreignKey: 'userId', as: 'shops'});
+      User.hasOne(models.Cart, { foreignKey: 'userId', as: 'cart'});
     }
   }
 
@@ -71,16 +72,20 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'User',
   });
 
+  User.addHook('afterCreate', async (user, options) => {
+    const { Cart } = sequelize.models;
+    await Cart.create({ userId: user.id });
+  });
+
   User.addHook('beforeSave', async (user, options) => {
 
-    // Hash the password before saving the user
     if (user.changed('password')) {
       user.password = await bcrypt.hash(user.password, 10);
     }
 
   });
 
-  User.beforeUpdate((user, options) => {
+  User.addHook('beforeUpdate', async (user, options) => {
     user.setDataValue('id', user._previousDataValues.id);
   });
 

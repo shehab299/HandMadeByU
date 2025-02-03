@@ -16,7 +16,10 @@ async function createProduct(req, res, next) {
 async function  getProducts(req, res, next) {
 
     const shopId = req.params.shopId;
-    const products = await ProductService.getProducts(shopId);
+    
+    filters = {shopId}
+
+    const products = await ProductService.getProducts(filters);
 
     res.status(200).json({
         status: 'success',

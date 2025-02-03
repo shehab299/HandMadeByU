@@ -1,22 +1,20 @@
 const express = require('express');
-const { 
-    createShop, 
-    getShops, 
-    getShop, 
-    updateShop, 
-    deleteShop 
-} = require('../controllers/shop.controller');
-
-const { createShopSchema, updateShopSchema } = require('../validations/shop.validate');
+const shopController = require('../controllers/shop.controller');
 const validate = require('../middleware/validate');
 const authenticate = require('../middleware/auth');
+const shopValidator = require('../validations/shop.validate');
+
+const productRouter = require('./shop/product.shop.route');
 
 const shopRouter = express.Router();
 
-shopRouter.post('/', authenticate, validate(createShopSchema), createShop);
-shopRouter.get('/', authenticate, getShops);
-shopRouter.get('/:id', authenticate, getShop);
-shopRouter.put('/:id', authenticate, validate(updateShopSchema), updateShop);
-shopRouter.delete('/:id', authenticate, deleteShop);
+shopRouter.use(authenticate);
+
+shopRouter.post('/', validate(shopValidator.createShopSchema), shopController.createShop);
+shopRouter.get('/', shopController.getShops);
+shopRouter.get('/:id', shopController.getShop);
+shopRouter.put('/:id', validate(shopValidator.updateShopSchema), shopController.updateShop);
+shopRouter.delete('/:id', shopController.deleteShop);
+shopRouter.use(':shopId/products', productRouter);
 
 module.exports = shopRouter;

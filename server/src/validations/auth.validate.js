@@ -1,7 +1,6 @@
 const Joi = require('joi');
 const userSchema = require("./Models/user.validation");
 
-
 const signupSchema = Joi.object({}).concat(userSchema);
 
 const loginSchema = Joi.object({

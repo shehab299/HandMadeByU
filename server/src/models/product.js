@@ -1,7 +1,4 @@
-'use strict';
-
 const { Model, DataTypes } = require('sequelize');
-
 
 const ProductSchema = {
   id: {
@@ -53,10 +50,10 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Product',
   });
 
-  Product.beforeUpdate((product, options) => {
+  Product.addHook('beforeUpdate', (product, options) => {
     product.setDataValue('shopId', product._previousDataValues.shopId);
     product.setDataValue('id', product._previousDataValues.id);
-  });
+  })
 
   
   return Product;
