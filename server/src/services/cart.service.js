@@ -48,10 +48,13 @@ class CartService{
 
         const cart = await Cart.findOne({
             where: { userId },
-            include: [{
-                model: CartItem,
-                include: Product
-            }]
+            include: [
+                {
+                    model: CartItem,
+                    as: 'cartItems',
+                    include: [{ model: Product, as: 'product' }]
+                }
+            ]
         });
 
         return cart;

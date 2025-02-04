@@ -45,7 +45,7 @@ class ProductService {
             throw new AppError("Unauthorized", 401);
         }
 
-        await product.update(req.body);
+        await product.update(body);
         return product;
     }
 

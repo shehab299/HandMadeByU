@@ -109,7 +109,7 @@
  */
 
 /**
- * @api {put} /shops/:shopId/products/:productId Update a product
+ * @api {patch} /shops/:shopId/products/:productId Update a product
  * @apiName UpdateProduct
  * @apiGroup Products
  * @apiPermission authenticated
@@ -145,7 +145,7 @@
  *   }
  *
  * @apiExample {json} Request Example:
- *   PUT /shops/67890/products/12345
+ *   PATCH /shops/67890/products/12345
  *   {
  *     "name": "Updated Handmade Vase",
  *     "price": 25,

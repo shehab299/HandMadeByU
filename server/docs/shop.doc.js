@@ -33,7 +33,6 @@
  * @apiError (400) ValidationError Missing or invalid fields.
  * @apiError (401) Unauthorized User is not authenticated.
  */
-// shopRouter.post('/', authenticate, validate(createShopSchema), createShop);
 
 
 /**
@@ -77,7 +76,6 @@
  * 
  * @apiHeader {String} Authorization Bearer token of the authenticated user.
  */
-// shopRouter.get('/', authenticate, getShops);
 
 
 /**
@@ -109,11 +107,10 @@
  * @apiError (400) NotFound Shop not found.
  * @apiError (401) Unauthorized User is not authenticated.
  */
-// shopRouter.get('/:id', authenticate, getShop);
 
 
 /**
- * @api {put} /shops/:id Update a shop
+ * @api {patch} /shops/:id Update a shop
  * @apiName UpdateShop
  * @apiGroup Shop
  * @apiPermission Authenticated Users
@@ -151,7 +148,6 @@
  * @apiError (401) Unauthorized User is not authenticated.
  * @apiError (404) NotFound Shop not found.
  */
-// shopRouter.put('/:id', authenticate, validate(updateShopSchema), updateShop);
 
 
 /**
@@ -175,5 +171,4 @@
  * @apiError (401) Unauthorized User is not authenticated.
  * @apiError (404) NotFound Shop not found.
  */
-// shopRouter.delete('/:id', authenticate, deleteShop);
 

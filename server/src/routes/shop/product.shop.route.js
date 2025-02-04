@@ -16,12 +16,12 @@ const {
     updateProductSchema
 } = require('../../validations/product.validate')
 
-const productRouter = express.Router();
+const productRouter = express.Router({ mergeParams: true });
 
 productRouter.get('/', getProducts)
 productRouter.get('/:productId', getProduct)
 productRouter.post('/', validate(createProductSchema), createProduct)
 productRouter.delete('/:productId', deleteProduct)
-productRouter.put('/:productId', validate(updateProductSchema), updateProduct)
+productRouter.patch('/:productId', validate(updateProductSchema), updateProduct)
 
 module.exports = productRouter;
