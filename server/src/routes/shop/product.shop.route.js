@@ -16,7 +16,7 @@ const {
     updateProductSchema
 } = require('../../validations/product.validate')
 
-const productRouter = express.Router();
+const productRouter = express.Router({ mergeParams: true });
 
 productRouter.get('/', getProducts)
 productRouter.get('/:productId', getProduct)

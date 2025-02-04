@@ -9,7 +9,8 @@ const asyncListen = require('./utils/asyncListen.js');
 
 async function main(){
     await db.sequelize.authenticate();
-    await db.sequelize.sync();
+    await db.sequelize.sync({
+    });
     console.log('Database is connected');
 
     await asyncListen(app, process.env.PORT || 3000);

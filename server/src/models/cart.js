@@ -6,15 +6,6 @@ const CartSchema = {
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
-    },
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        unique: true,
-        references: {
-            model: 'User',
-            key: 'id'
-        }
     }
 };
 
@@ -22,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     class Cart extends Model {
 
         static associate(models) {
+
+            console.log(models)
 
             Cart.belongsTo(models.User, {
                 foreignKey: 'userId',
@@ -31,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             Cart.hasMany(models.CartItem, {
                 foreignKey: 'cartId',
                 as: 'cartItems'
-            })
+            });
         }
 
     }

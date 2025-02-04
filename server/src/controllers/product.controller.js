@@ -4,7 +4,10 @@ const ProductService = require('../services/product.service');
 async function createProduct(req, res, next) {
 
     const shopId = req.params.shopId;
-    const product = await ProductService.createProduct(shopId, req.body);
+    const userId = req.user.id;
+
+    const product = await ProductService.createProduct(userId, shopId, req.body);
+
 
     res.status(201).json({
         status: 'success',
