@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 import { login } from "../services/login";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 function useLogin() {
   const navigate = useNavigate();

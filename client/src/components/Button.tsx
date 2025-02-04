@@ -1,14 +1,17 @@
 import { ButtonHTMLAttributes } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 const StyledButton = styled.button<{
   $variety?: string;
+  $size?: string;
   as?: React.ElementType;
 }>`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
 
   font-weight: 800;
   color: white;
@@ -43,7 +46,6 @@ const StyledButton = styled.button<{
     if ($variety === "primary") {
       return css`
         background: var(--color-accent);
-        font-weight: 600;
 
         width: 100%;
         transition: background-color 0.2s;
@@ -58,26 +60,75 @@ const StyledButton = styled.button<{
         }
       `;
     }
+
+    if ($variety === "secondary") {
+      return css`
+        background: var(--color-button-secondary);
+        color: #1a1a1a;
+
+        &:hover {
+          background: var(--color-button-secondary-hover);
+        }
+
+        &:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+        }
+      `;
+    }
+  }}
+
+  ${({ $size }) => {
+    if ($size === "small") {
+      return css`
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+      `;
+    }
+
+    if ($size === "medium") {
+      return css`
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      `;
+    }
+
+    if ($size === "large") {
+      return css`
+        padding: 1.5rem 3rem;
+        font-size: 1.25rem;
+      `;
+    }
   }}
 `;
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   $variety?: "primary" | "secondary";
+  $size?: "small" | "medium" | "large";
   to?: string;
 };
 
-function Button({ $variety = "primary", to, children, ...props }: Props) {
+function Button({
+  $variety = "primary",
+  $size = "medium",
+  to,
+  children,
+  ...props
+}: Props) {
   if (to) {
     return (
-      <StyledButton $variety={$variety} as={Link} to={to}>
+      <StyledButton $size={$size} $variety={$variety} as={Link} to={to}>
         {children}
       </StyledButton>
     );
   }
 
   return (
-    <StyledButton $variety={$variety} {...props}>
+    <StyledButton $size={$size} $variety={$variety} {...props}>
       {children}
     </StyledButton>
   );

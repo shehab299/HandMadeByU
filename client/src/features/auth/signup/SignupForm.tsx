@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 import { useForm, SubmitHandler } from "react-hook-form";

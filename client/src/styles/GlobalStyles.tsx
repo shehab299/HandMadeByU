@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
   &.dark-mode {
    
   }
+  --color-button-secondary: #f5f7f9;
+  --color-button-secondary-hover: #e1e5ea;
   --color-accent: #4a90e2;
   --color-accent-hover: #357abd;
   --color-text: #1a202c;
@@ -70,6 +72,7 @@ select {
 
 button {  
   cursor: pointer;
+  border: none;
 }
 
 *:disabled {

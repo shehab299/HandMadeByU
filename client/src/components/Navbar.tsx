@@ -33,9 +33,7 @@ const NavActions = styled.div`
 
 const MenuButton = styled.button`
   background: none;
-  border: none;
   padding: 0.5rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
   color: #1a1a1a;
@@ -75,7 +73,7 @@ export function Navbar() {
               icon={<Store size={24} />}
               onClick={() => setIsShopDropdownOpen(!isShopDropdownOpen)}
             />
-            <ShopDropdown $isOpen={isShopDropdownOpen}/>
+            <ShopDropdown $isOpen={isShopDropdownOpen} />
           </div>
 
           <NavLink to="/profile" icon={<User size={24} />} />

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { X } from "lucide-react";
 
@@ -21,9 +21,7 @@ const CloseButton = styled.button`
   top: 1rem;
   right: 1rem;
   background: none;
-  border: none;
   padding: 0.5rem;
-  cursor: pointer;
   color: #1a1a1a;
 
   &:hover {
