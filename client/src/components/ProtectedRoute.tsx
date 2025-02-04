@@ -6,10 +6,8 @@ type prortectedRouteType = {
 };
 
 function ProtectedRoute({ children }: prortectedRouteType) {
-  console.log("inside protected route");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  console.log(token);
 
   useEffect(() => {
     if (!token) {

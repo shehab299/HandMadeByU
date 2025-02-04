@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
   &.dark-mode {
    
   }
+  --color-accent: #4a90e2;
+  --color-accent-hover: #357abd;
   --color-text: #1a202c;
   --color-error: #EF5350;
   --color-input-border: rgb(230, 227, 227);

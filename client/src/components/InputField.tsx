@@ -13,19 +13,50 @@ const Container = styled.div<{ $error: boolean }>`
     padding: 0.5rem;
     border-color: ${({ $error }) =>
       $error ? "var(--color-error)" : "var(--color-input-border)"};
+
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
   }
 
   & input:focus {
     outline: none;
+    border-color: #4a90e2;
+  }
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-height: 120px;
+  resize: vertical;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #4a90e2;
   }
 `;
 
 const Label = styled.label`
+  display: block;
+  
   text-transform: capitalize;
+  color: #4a4a4a;
+  font-weight: 500;
 `;
 
 const Error = styled.p`
   color: var(--color-error);
+
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 `;
 
 type Props = {
@@ -43,22 +74,35 @@ function InputField({
   register,
   validate,
   label,
+  placeholder,
   ...props
 }: Props) {
   return (
     <Container $error={!!error}>
       <Label htmlFor={id}>{label || type}</Label>
-      <input
-        {...register(id!, { validate })}
-        {...props}
-        type={type}
-        id={id}
-        aria-invalid={!!error}
-        autoComplete="on"
-      />
+      {type == "textArea" ? (
+        <TextArea
+          {...register(id!, { validate })}
+          id={id}
+          aria-invalid={!!error}
+          autoComplete="on"
+          placeholder={placeholder}
+        />
+      ) : (
+        <input
+          {...register(id!, { validate })}
+          {...props}
+          type={type}
+          id={id}
+          aria-invalid={!!error}
+          autoComplete="on"
+          placeholder={placeholder}
+        />
+      )}
       {error && <Error>{error}</Error>}
     </Container>
   );
 }
 
 export default InputField;
+export { Label, Error };

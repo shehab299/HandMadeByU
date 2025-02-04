@@ -134,7 +134,11 @@ function SignupForm() {
           })}
         </div>
         <div>
-          <Button type="submit" disabled={isSubmitting || isPending}>
+          <Button
+            $variety="secondary"
+            type="submit"
+            disabled={isSubmitting || isPending}
+          >
             {isSubmitting || isPending ? <SpinnerMini /> : "Signup"}
           </Button>
           <p>

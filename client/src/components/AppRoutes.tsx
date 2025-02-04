@@ -6,6 +6,7 @@ import Home from "@pages/Home";
 
 import ProtectedRoute from "@components/ProtectedRoute";
 import AppLayout from "@components/AppLayout";
+import CreateShopForm from "@features/shop/createShopForm";
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
           }
         >
           <Route index path="/" element={<Home />} />
+          <Route index path="/create-shop" element={<CreateShopForm />} />
         </Route>
 
         <Route path="login" element={<Login />} />

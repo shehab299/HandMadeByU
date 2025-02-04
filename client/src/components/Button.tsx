@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ $variety?: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,14 +32,40 @@ const StyledButton = styled.button`
   &:disabled {
     pointer-events: none;
   }
+
+  ${({ $variety }) => {
+    if ($variety === "primary") {
+      return css`
+        background: var(--color-accent);
+        font-weight: 600;
+
+        width: 100%;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background: var(--color-accent-hover);
+        }
+
+        &:disabled {
+          background: #ccc;
+          cursor: not-allowed;
+        }
+      `;
+    }
+  }}
 `;
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
+  $variety?: "primary" | "secondary";
 };
 
-function Button(props: Props) {
-  return <StyledButton {...props}>{props.children}</StyledButton>;
+function Button({ $variety = "primary", ...props }: Props) {
+  return (
+    <StyledButton $variety={$variety} {...props}>
+      {props.children}
+    </StyledButton>
+  );
 }
 
 export default Button;
