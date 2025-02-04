@@ -9,6 +9,7 @@ import AppLayout from "@components/AppLayout";
 import CreateShopForm from "@features/shop/createShopForm";
 import ShopProfile from "@features/shop/shopProfile";
 import ProductView from "@features/products/ProductView";
+import { AuthProvider } from "context/AuthContext";
 
 function AppRoutes() {
   return (
@@ -17,7 +18,9 @@ function AppRoutes() {
         <Route
           element={
             <ProtectedRoute>
-              <AppLayout />
+              <AuthProvider>
+                <AppLayout />
+              </AuthProvider>
             </ProtectedRoute>
           }
         >

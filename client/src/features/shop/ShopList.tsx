@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useMyShops } from "./hooks/useMyShops";
+import { useMyShops } from "./hooks/useShops";
 import ShopItem from "./ShopItem";
 
 const List = styled.div`

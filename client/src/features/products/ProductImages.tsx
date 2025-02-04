@@ -35,13 +35,13 @@ const ThumbnailContainer = styled.div`
   }
 `;
 
-const Thumbnail = styled.img<{ active?: boolean }>`
+const Thumbnail = styled.img<{ $active?: boolean }>`
   width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
-  border: 2px solid ${(props) => (props.active ? "#4a90e2" : "transparent")};
+  border: 2px solid ${(props) => (props.$active ? "#4a90e2" : "transparent")};
   transition: all 0.2s;
 
   &:hover {
@@ -116,7 +116,7 @@ function ProductImages({ images }: ProductImagesProps) {
             key={index}
             src={image}
             alt={`Product ${index + 1}`}
-            active={index === selectedImage}
+            $active={index === selectedImage}
             onClick={() => setSelectedImage(index)}
           />
         ))}

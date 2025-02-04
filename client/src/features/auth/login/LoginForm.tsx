@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { validation } from "./schema/validation";
@@ -60,9 +60,9 @@ function LoginForm() {
 
   const { login, isPending } = useLogin();
 
-  const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
+  async function onSubmit(data: LoginFormInputs) {
     login(data);
-  };
+  }
 
   return (
     <Container>
@@ -84,7 +84,7 @@ function LoginForm() {
           />
         </div>
         <div>
-          <Button $variety="secondary" type="submit" disabled={isSubmitting || isPending}>
+          <Button type="submit" disabled={isSubmitting || isPending}>
             {isSubmitting || isPending ? <SpinnerMini /> : "Login"}
           </Button>
           <p>

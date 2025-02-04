@@ -112,13 +112,7 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   to?: string;
 };
 
-function Button({
-  $variety = "primary",
-  $size = "medium",
-  to,
-  children,
-  ...props
-}: Props) {
+function Button({ $variety, $size = "medium", to, children, ...props }: Props) {
   if (to) {
     return (
       <StyledButton $size={$size} $variety={$variety} as={Link} to={to}>

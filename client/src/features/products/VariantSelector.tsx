@@ -17,15 +17,15 @@ const Options = styled.div`
   gap: 0.5rem;
 `;
 
-const VariantButton = styled.button<{ active?: boolean }>`
+const VariantButton = styled.button<{ $active?: boolean }>`
   padding: 0.5rem 1rem;
 
   border: 2px solid
-    ${(props) => (props.active ? "var(--color-accent)" : "#e1e1e1")};
+    ${(props) => (props.$active ? "var(--color-accent)" : "#e1e1e1")};
   border-radius: 6px;
 
-  background: ${(props) => (props.active ? "#f5f7f9" : "white")};
-  color: ${(props) => (props.active ? "var(--color-accent)" : "#1a1a1a")};
+  background: ${(props) => (props.$active ? "#f5f7f9" : "white")};
+  color: ${(props) => (props.$active ? "var(--color-accent)" : "#1a1a1a")};
   transition: all 0.2s;
 
   &:hover {
@@ -47,7 +47,7 @@ export function VariantSelector({ sizes }: VariantSelectorProps) {
         {sizes.map((size) => (
           <VariantButton
             key={size}
-            active={size === selectedSize}
+            $active={size === selectedSize}
             onClick={() => setSelectedSize(size)}
           >
             {size}

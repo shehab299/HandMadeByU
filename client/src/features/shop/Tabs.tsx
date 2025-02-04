@@ -11,13 +11,13 @@ const List = styled.div`
   padding: 0 2rem;
 `;
 
-const Tab = styled.button<{ active?: boolean }>`
+const Tab = styled.button<{ $active?: boolean }>`
   padding: 1rem 0;
-  color: ${(props) => (props.active ? "#1a1a1a" : "#666")};
-  font-weight: ${(props) => (props.active ? "600" : "400")};
+  color: ${(props) => (props.$active ? "#1a1a1a" : "#666")};
+  font-weight: ${(props) => (props.$active ? "600" : "400")};
   background: none;
   border-bottom: 2px solid
-    ${(props) => (props.active ? "var(--color-accent)" : "transparent")};
+    ${(props) => (props.$active ? "var(--color-accent)" : "transparent")};
   transition: all 0.2s;
 
   &:hover {
@@ -29,7 +29,7 @@ function Tabs() {
   return (
     <Container>
       <List>
-        <Tab active>Products</Tab>
+        <Tab $active>Products</Tab>
         <Tab>About</Tab>
         <Tab>Reviews</Tab>
       </List>
