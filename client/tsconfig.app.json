@@ -33,6 +33,7 @@
       "@utils/*": ["./utils/*"],
       "@styles/*": ["./styles/*"],
       "@features/*": ["./features/*"],
+      "@types": ["./types.ts"],
     }
   },
   "include": ["src"]

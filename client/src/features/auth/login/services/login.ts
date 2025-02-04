@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL;
+import { API_URL } from "constants";
 
 async function login({ email, password }: { email: string; password: string }) {
   const res = await fetch(`${API_URL}/auth/login`, {

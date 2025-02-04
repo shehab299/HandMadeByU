@@ -5,19 +5,23 @@ import styled from "styled-components";
 import InputField from "@components/InputField";
 import Button from "@components/Button";
 import FileUploadField from "@components/FileUploadField";
+import SpinnerMini from "@components/SpinnerMini";
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useCreateShop } from "./hooks/useCreateShop";
 import { validation } from "./schema/validation";
+
+import { CreatedShop } from "@types";
 
 const Container = styled.div`
   min-height: 100vh;
   background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
- 
+
   display: flex;
   align-items: center;
   justify-content: center;
- 
- padding: 2rem;
+
+  padding: 2rem;
 `;
 
 const FormCard = styled.div`
@@ -47,23 +51,18 @@ const FormGroup = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-interface FormInputs {
-  name: string;
-  description: string;
-  logo?: FileList;
-  banner?: FileList;
-}
-
 function CreateShopForm() {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>({
+  } = useForm<CreatedShop>({
     resolver: yupResolver(validation),
     mode: "onTouched",
   });
+
+  const { createShop, isPending } = useCreateShop();
 
   const logoFiles = watch("logo");
   const bannerFiles = watch("banner");
@@ -73,21 +72,15 @@ function CreateShopForm() {
     ? URL.createObjectURL(bannerFiles[0])
     : "";
 
-  async function onSubmit(data: FormInputs) {
-    //TODO: handle form submission
-    console.log("Form data:", {
-      name: data.name,
-      description: data.description,
-      logo: data.logo?.[0] ?? null,
-      banner: data.banner?.[0] ?? null,
-    });
+  async function onSubmit(data: CreatedShop) {
+    createShop(data);
   }
 
   return (
     <Container>
       <FormCard>
         <Title>
-          <Store color='var(--color-accent)' size={32} />
+          <Store color="var(--color-accent)" size={32} />
           Create Your Shop
         </Title>
         <Subtitle>
@@ -138,7 +131,9 @@ function CreateShopForm() {
               placeholder="Describe what your shop offers..."
             />
           </FormGroup>
-          <Button disabled={isSubmitting}>Create Shop</Button>
+          <Button disabled={isSubmitting}>
+            {isPending ? <SpinnerMini /> : "Create Shop"}
+          </Button>
         </form>
       </FormCard>
     </Container>

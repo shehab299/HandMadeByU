@@ -1,7 +1,11 @@
 import { ButtonHTMLAttributes } from "react";
+import { Link } from "react-router";
 import styled, { css } from "styled-components";
 
-const StyledButton = styled.button<{ $variety?: string }>`
+const StyledButton = styled.button<{
+  $variety?: string;
+  as?: React.ElementType;
+}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,6 +37,8 @@ const StyledButton = styled.button<{ $variety?: string }>`
     pointer-events: none;
   }
 
+  text-decoration: none;
+
   ${({ $variety }) => {
     if ($variety === "primary") {
       return css`
@@ -58,12 +64,21 @@ const StyledButton = styled.button<{ $variety?: string }>`
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   $variety?: "primary" | "secondary";
+  to?: string;
 };
 
-function Button({ $variety = "primary", ...props }: Props) {
+function Button({ $variety = "primary", to, children, ...props }: Props) {
+  if (to) {
+    return (
+      <StyledButton $variety={$variety} as={Link} to={to}>
+        {children}
+      </StyledButton>
+    );
+  }
+
   return (
     <StyledButton $variety={$variety} {...props}>
-      {props.children}
+      {children}
     </StyledButton>
   );
 }
