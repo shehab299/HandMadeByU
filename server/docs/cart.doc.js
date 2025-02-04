@@ -45,28 +45,38 @@
  * @apiSuccess {Object} data.cart The user's cart
  * 
  * @apiSuccessExample {json} Success Response:
- *     HTTP/1.1 200 OK
- *     {
- *       "status": "success",
- *       "data": {
- *         "cart": {
- *           "id": "1",
- *           "userId": "123",
- *           "items": [
- *             {
- *               "id": "10",
- *               "productId" : "20",
- *               "quantity": 2
- *             },
- *             {
- *               "id": "10",
- *               "productId" : "20",
- *               "quantity": 2
- *             }
- *           ]
+ *{
+ *  "status": "success",
+ *  "data": {
+ *    "cart": {
+ *      "id": 1,
+ *     "createdAt": "2025-02-04T06:39:19.432Z",
+ *     "updatedAt": "2025-02-04T06:39:19.432Z",
+ *     "userId": 1,
+ *     "cartItems": [
+ *       {
+ *         "id": 2,
+ *         "quantity": 2,
+ *         "createdAt": "2025-02-04T07:20:56.443Z",
+ *         "updatedAt": "2025-02-04T07:20:56.443Z",
+ *         "cartId": 1,
+ *         "productId": 1,
+ *         "product": {
+ *           "id": 1,
+ *           "name": "Handmade Vase",
+ *           "price": 20,
+ *           "description": "A beautiful handmade vase.",
+ *           "quantity": 5,
+ *           "image": null,
+ *           "createdAt": "2025-02-04T06:46:06.940Z",
+ *           "updatedAt": "2025-02-04T07:20:56.454Z",
+ *           "shopId": 1
  *         }
  *       }
- *     }
+ *     ]
+ *   }
+ * }
+ *}
  * 
  * @apiExample {json} Request Example:
  *     {}
