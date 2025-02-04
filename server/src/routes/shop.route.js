@@ -13,7 +13,7 @@ shopRouter.use(authenticate);
 shopRouter.post('/', validate(shopValidator.createShopSchema), shopController.createShop);
 shopRouter.get('/', shopController.getShops);
 shopRouter.get('/:id', shopController.getShop);
-shopRouter.put('/:id', validate(shopValidator.updateShopSchema), shopController.updateShop);
+shopRouter.patch('/:id', validate(shopValidator.updateShopSchema), shopController.updateShop);
 shopRouter.delete('/:id', shopController.deleteShop);
 shopRouter.use('/:shopId/products', productRouter);
 
