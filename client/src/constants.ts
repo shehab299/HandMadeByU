@@ -1,2 +1,2 @@
-export const Brand = "Handmade";
-// const Logo =
+export const PROJECT_NAME = "Handmade";
+export const LOGO = "🧶";

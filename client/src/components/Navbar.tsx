@@ -12,6 +12,7 @@ import {
   Search,
   X,
 } from "lucide-react";
+import { LOGO, PROJECT_NAME } from "constants";
 
 const Nav = styled.nav`
   background: white;
@@ -58,7 +59,7 @@ const SearchInput = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: var(--color-accent);
   }
 `;
 
@@ -86,7 +87,7 @@ const NavLink = styled(Link)`
   position: relative;
 
   &:hover {
-    color: #4a90e2;
+    color: var(--color-accent);
   }
 `;
 
@@ -94,11 +95,14 @@ const Badge = styled.span`
   position: absolute;
   top: -8px;
   right: -8px;
-  background: #e53e3e;
+
+  background: var(--color-badge);
   color: white;
   font-size: 0.75rem;
+  
   padding: 0.125rem 0.375rem;
-  border-radius: 9999px;
+  border-radius: 50%;
+
   min-width: 18px;
   text-align: center;
 `;
@@ -113,7 +117,7 @@ const MenuButton = styled.button`
   color: #1a1a1a;
 
   &:hover {
-    color: #4a90e2;
+    color: var(--color-accent);
   }
 `;
 
@@ -142,7 +146,7 @@ const CloseButton = styled.button`
   color: #1a1a1a;
 
   &:hover {
-    color: #4a90e2;
+    color: var(--color-accent);
   }
 `;
 
@@ -164,7 +168,7 @@ const CategoryItem = styled.li`
     transition: color 0.2s;
 
     &:hover {
-      color: #4a90e2;
+      color: var(--color-accent);
     }
   }
 `;
@@ -182,8 +186,8 @@ export function Navbar() {
         </MenuButton>
 
         <Brand to="/">
-          <Store size={24} />
-          ShopHub
+          {LOGO}
+          {PROJECT_NAME}
         </Brand>
 
         <SearchContainer>
