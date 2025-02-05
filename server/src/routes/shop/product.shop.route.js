@@ -24,4 +24,5 @@ productRouter.post('/', validate(createProductSchema), createProduct)
 productRouter.delete('/:productId', deleteProduct)
 productRouter.patch('/:productId', validate(updateProductSchema), updateProduct)
 
+
 module.exports = productRouter;

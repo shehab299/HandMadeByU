@@ -10,13 +10,13 @@ const {notFoundHandler, errorLogger, errorHandler} = require('./middleware/error
 // Configurations
 const corOptions = require('./config/cors');
 
-
 // Routes
 const apiRouter = require('./routes/api.js');
 
 const app = express();
 
-
+//Serving Static Files
+app.use(express.static('public'));
 
 
 if(process.env.NODE_ENV === 'development') 
