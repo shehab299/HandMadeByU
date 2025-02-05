@@ -16,7 +16,7 @@ const Container = styled.div<{ $error: boolean }>`
 
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #e1e1e1;
+    border: 1px solid var(--color-input-border);
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.2s;
@@ -24,14 +24,14 @@ const Container = styled.div<{ $error: boolean }>`
 
   & input:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: var(--color-accent);
   }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #e1e1e1;
+  border: 1px solid var(--color-input-border);
   border-radius: 8px;
   font-size: 1rem;
   min-height: 120px;
@@ -40,13 +40,13 @@ const TextArea = styled.textarea`
 
   &:focus {
     outline: none;
-    border-color: #4a90e2;
+    border-color: var(--color-accent);
   }
 `;
 
 const Label = styled.label`
   display: block;
-  
+
   text-transform: capitalize;
   color: #4a4a4a;
   font-weight: 500;
@@ -61,8 +61,8 @@ const Error = styled.p`
 
 type Props = {
   id: string;
-  error: string | undefined;
-  register: UseFormRegister<any>;
+  error?: string | undefined;
+  register?: UseFormRegister<any>;
   label?: string;
   validate?: (value: string) => string | undefined;
 } & React.InputHTMLAttributes<HTMLInputElement>;
@@ -79,10 +79,10 @@ function InputField({
 }: Props) {
   return (
     <Container $error={!!error}>
-      <Label htmlFor={id}>{label || type}</Label>
+      {label && <Label htmlFor={id}>{label}</Label>}
       {type == "textArea" ? (
         <TextArea
-          {...register(id!, { validate })}
+          {...register?.(id!, { validate })}
           id={id}
           aria-invalid={!!error}
           autoComplete="on"
@@ -90,7 +90,7 @@ function InputField({
         />
       ) : (
         <input
-          {...register(id!, { validate })}
+          {...register?.(id!, { validate })}
           {...props}
           type={type}
           id={id}

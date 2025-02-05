@@ -76,6 +76,21 @@ const StyledButton = styled.button<{
         }
       `;
     }
+
+    if ($variety === "danger") {
+      return css`
+        background: var(--color-warning);
+
+        &:hover {
+          background: var(--color-warning-hover);
+        }
+
+        &:disabled {
+          background: var(--color-warning-disabled);
+          cursor: not-allowed;
+        }
+      `;
+    }
   }}
 
   ${({ $position }) => {
@@ -121,7 +136,7 @@ const StyledButton = styled.button<{
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
-  $variety?: "primary" | "secondary" | "gradient";
+  $variety?: "primary" | "secondary" | "gradient" | "danger";
   $size?: "small" | "medium" | "large";
   $position?: "floating" | "normal";
   to?: string;

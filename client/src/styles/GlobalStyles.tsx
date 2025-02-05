@@ -14,8 +14,14 @@ const GlobalStyles = createGlobalStyle`
   --color-accent-hover: #357abd;
   --color-text: #1a202c;
   --color-error: #EF5350;
+
   --color-badge: #e53e3e;
-  --color-input-border: rgb(230, 227, 227);
+  --color-warning: #e53e3e;
+  --color-warning-disabled: #922626;
+  --color-warning-shade: #feb2b2;
+  --color-warning-hover: #c53030;
+
+  --color-input-border: #e1e1e1;
   --inputfield-color: #f3f4f6ff;
   --themecolor-secondary: #00bdd6ff;
 }

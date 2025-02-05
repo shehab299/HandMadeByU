@@ -1,27 +1,27 @@
+import { useParams } from "react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import { createProduct } from "../services/createProduct";
-import { useParams } from "react-router";
-import { createdProduct } from "@types";
+import { deleteProduct } from "../services/deleteProduct";
 
-function useCreateProduct() {
+function useDeleteProduct() {
   const { id } = useParams();
   const queryClient = useQueryClient();
 
   const { mutate, isPending } = useMutation({
-    mutationFn: (product: createdProduct) =>
-      createProduct({ shopId: id!, product }),
+    mutationFn: (productId: string) =>
+      deleteProduct({ shopId: id!, productId }),
     onSuccess: () => {
-      toast.success("Product created successfully");
+      toast.success("Product deleted successfully");
       queryClient.invalidateQueries({ queryKey: [`shop-${id}-products`] });
     },
     onError: (error) => {
       toast.error(error.message);
+      console.error(error);
     },
   });
 
-  return { createProduct: mutate, isPending };
+  return { deleteProduct: mutate, isPending };
 }
 
-export { useCreateProduct };
+export { useDeleteProduct };
