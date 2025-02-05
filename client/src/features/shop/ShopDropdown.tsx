@@ -1,47 +1,35 @@
-import styled from "styled-components";
-import { Plus } from "lucide-react";
-
+import React, { useState } from "react";
 import ShopList from "./ShopList";
-import Button from "@components/Button";
+import Dropdown from "@components/Dropdown";
+import { useNavigate } from "react-router";
+import { Store } from "lucide-react";
+import { NavLink } from "@components/NavLink";
 
-const ShopDropdownContainer = styled.div<{ $isOpen: boolean }>`
-  display: ${(props) => (props.$isOpen ? "block" : "none")};
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 1000;
+function ShopDropdown() {
+  const navigate = useNavigate();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  width: 320px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  const toggleDropdown = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setIsDropdownOpen((prev) => !prev);
+  };
 
-  padding: 1rem;
-  margin-top: 0.5rem;
-`;
-
-const Divider = styled.hr`
-  border: none;
-  border-top: 1px solid #e1e1e1;
-  margin: 0.5rem 0;
-`;
-
-interface ShopDropdownProps {
-  $isOpen: boolean;
-}
-
-function ShopDropdown({ $isOpen }: ShopDropdownProps) {
   return (
-    <ShopDropdownContainer $isOpen={$isOpen}>
-      <ShopList />
+    <div>
+      <NavLink to="#" icon={<Store size={24} />} onClick={toggleDropdown} />
 
-      <Divider />
-
-      <Button $variety="primary" $size="small" to="/create-shop">
-        <Plus size={18} />
-        Create New Shop
-      </Button>
-    </ShopDropdownContainer>
+      <Dropdown
+        $isOpen={isDropdownOpen}
+        onClose={() => setIsDropdownOpen(false)}
+        showDivider
+        showButton
+        buttonText="Create New Shop"
+        buttonTo="/create-shop"
+        buttonOnClick={() => navigate("/create-shop")}
+      >
+        <ShopList />
+      </Dropdown>
+    </div>
   );
 }
 

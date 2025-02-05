@@ -47,7 +47,6 @@ function CreateShopForm() {
     : "";
 
   async function onSubmit(data: CreatedShop) {
-    console.log('creayi');
     createShop(data);
   }
 

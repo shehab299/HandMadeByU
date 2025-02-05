@@ -36,7 +36,7 @@ interface NavLinkProps {
   to: string;
   icon: React.ReactNode;
   badgeCount?: number;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent) => void;
 }
 
 export function NavLink({ to, icon, badgeCount, onClick }: NavLinkProps) {

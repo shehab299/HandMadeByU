@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Heart, ShoppingCart, User, Store, Menu } from "lucide-react";
+import { Heart, ShoppingCart, User, Menu } from "lucide-react";
 import { Brand } from "./Brand";
 import { SearchBar } from "./SearchBar";
 import { NavLink } from "./NavLink";
@@ -45,7 +45,6 @@ const MenuButton = styled.button`
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isShopDropdownOpen, setIsShopDropdownOpen] = useState(false);
   const cartItemsCount = 3;
   const wishlistCount = 5;
 
@@ -68,12 +67,7 @@ export function Navbar() {
           />
 
           <div style={{ position: "relative" }}>
-            <NavLink
-              to="#"
-              icon={<Store size={24} />}
-              onClick={() => setIsShopDropdownOpen(!isShopDropdownOpen)}
-            />
-            <ShopDropdown $isOpen={isShopDropdownOpen} />
+            <ShopDropdown />
           </div>
 
           <NavLink to="/profile" icon={<User size={24} />} />
