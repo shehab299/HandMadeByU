@@ -8,15 +8,15 @@ import FileUploadField from "@components/FileUploadField";
 import Button from "@components/Button";
 import FormTemplate, { FormGroup } from "@components/FormTemplate";
 
-import { useCreateProduct } from "./hooks/useCreateProduct";
 import { validation } from "./schema/validation";
+import { useCreateProduct } from "./hooks/useCreateProduct";
 
 const Buttons = styled.div`
   display: flex;
   gap: 1rem;
 `;
 
-type FormInputs = {
+export type ProductFormData = {
   name: string;
   price: number;
   description: string;
@@ -25,21 +25,23 @@ type FormInputs = {
 };
 
 type AddProductFormProps = {
-  shopId: string;
-  onSuccess: () => void;
-  onCancel?: () => void;
+  type?: "modal";
+  onConfirm?: () => void;
+  onClose?: () => void;
 };
 
-export function AddProductForm({ onSuccess, onCancel }: AddProductFormProps) {
+function AddProductForm({ onConfirm, onClose, type }: AddProductFormProps) {
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<FormInputs>({
+  } = useForm<ProductFormData>({
     resolver: yupResolver(validation),
     mode: "onTouched",
   });
+
+  console.log(type);
 
   const { createProduct } = useCreateProduct();
 
@@ -48,22 +50,19 @@ export function AddProductForm({ onSuccess, onCancel }: AddProductFormProps) {
     ? URL.createObjectURL(imageFiles[0])
     : "";
 
-  const onSubmit = async (data: FormInputs) => {
-    const imageUrl = URL.createObjectURL(data.image[0]);
-    const formData = {
+  async function onSubmit(data: ProductFormData) {
+    const image = data.image[0];
+    createProduct({
       name: data.name,
       price: Number(data.price),
       description: data.description,
       quantity: Number(data.quantity),
-      image: imageUrl,
-    };
-
-    createProduct(formData, {
-      onSettled: () => {
-        onSuccess();
-      },
+      image,
     });
-  };
+
+    onConfirm?.();
+    onClose?.();
+  }
 
   return (
     <FormTemplate
@@ -132,12 +131,12 @@ export function AddProductForm({ onSuccess, onCancel }: AddProductFormProps) {
         <Button $variety="primary" $size="small" disabled={isSubmitting}>
           {isSubmitting ? "Adding Product..." : "Add Product"}
         </Button>
-        {onCancel && (
-          <Button $variety="secondary" type="button" onClick={onCancel}>
-            Cancel
-          </Button>
-        )}
+        <Button $variety="secondary" type="button" onClick={onClose}>
+          Cancel
+        </Button>
       </Buttons>
     </FormTemplate>
   );
 }
+
+export default AddProductForm;

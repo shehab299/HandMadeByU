@@ -1,7 +1,7 @@
 import ConfirmDelete from "@components/ConfirmDelete";
-import Modal from "@components/Modall";
+import Modal from "@components/Modal";
 import { Product } from "@types";
-import { Star, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 
 import styled from "styled-components";
 import { useDeleteProduct } from "./hooks/useDeleteProduct";
@@ -43,14 +43,6 @@ const ProductPrice = styled.p`
   margin: 0.5rem 0;
 `;
 
-const ProductRating = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: #666;
-  font-size: 0.875rem;
-`;
-
 const DeleteIcon = styled.button`
   position: absolute;
 
@@ -83,31 +75,27 @@ function ProductCard({ id, image, name, price }: Product) {
       <ProductInfo>
         <ProductName>{name}</ProductName>
         <ProductPrice>${price}</ProductPrice>
-        <ProductRating>
-          <Star size={16} fill="#ffd700" />4
-        </ProductRating>
-
-        <Modal>
-          <Modal.Open opens="deleteProduct">
-            <DeleteIcon>
-              <Trash2 size={16} />
-            </DeleteIcon>
-          </Modal.Open>
-
-          <Modal.Window name="deleteProduct">
-            <ConfirmDelete
-              itemName={name}
-              warningMessage="All products, orders, and shop data will be permanently
-              deleted."
-              resourceName="product"
-              disabled={isPending}
-              onConfirm={() => {
-                deleteProduct(id);
-              }}
-            />
-          </Modal.Window>
-        </Modal>
       </ProductInfo>
+      <Modal>
+        <Modal.Open opens="deleteProduct">
+          <DeleteIcon>
+            <Trash2 size={16} />
+          </DeleteIcon>
+        </Modal.Open>
+
+        <Modal.Window name="deleteProduct">
+          <ConfirmDelete
+            itemName={name}
+            warningMessage="All products, orders, and shop data will be permanently
+              deleted."
+            resourceName="product"
+            disabled={isPending}
+            onConfirm={() => {
+              deleteProduct(id);
+            }}
+          />
+        </Modal.Window>
+      </Modal>
     </Container>
   );
 }

@@ -9,6 +9,7 @@ export const validation = yup.object({
 
   price: yup
     .number()
+    .typeError("Please enter product's the price")
     .required("Price is required")
     .positive("Price must be positive"),
 
@@ -16,6 +17,7 @@ export const validation = yup.object({
 
   quantity: yup
     .number()
+    .typeError("Please enter product's available the quantity")
     .required("Quantity is required")
     .integer("Quantity must be a whole number")
     .min(0, "Quantity must be 0 or more"),

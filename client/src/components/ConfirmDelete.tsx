@@ -5,24 +5,6 @@ import InputField from "./InputField";
 import { useState } from "react";
 
 const StyledConfirmDelete = styled.div`
-  /* width: 40rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-
-  background-color: white;
-  color: black;
-
-  & p {
-    color: white;
-    margin-bottom: 1.2rem;
-  }
-
-  & div {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.2rem;
-  } */
   background: white;
   border-radius: 12px;
   padding: 2rem;

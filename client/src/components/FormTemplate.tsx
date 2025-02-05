@@ -8,6 +8,8 @@ const FormCard = styled.form`
   width: 100%;
   max-width: 600px;
 
+  /* overflow-y: scroll; */
+
   & button {
     width: 100%;
   }
