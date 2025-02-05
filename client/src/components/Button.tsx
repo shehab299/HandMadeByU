@@ -7,13 +7,12 @@ const StyledButton = styled.button<{
   $size?: string;
   as?: React.ElementType;
 }>`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-
   gap: 0.5rem;
 
-  font-weight: 800;
   color: white;
 
   border: none;
@@ -47,7 +46,6 @@ const StyledButton = styled.button<{
       return css`
         background: var(--color-accent);
 
-        width: 100%;
         transition: background-color 0.2s;
 
         &:hover {

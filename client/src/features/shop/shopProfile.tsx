@@ -3,6 +3,12 @@ import ProductsGrid from "@features/products/ProductsGrid";
 import { shop } from "./data";
 import Tabs from "./Tabs";
 import Details from "./Details";
+import { Plus } from "lucide-react";
+import { useState } from "react";
+import { AddProductForm } from "@features/products/AddProductForm";
+import { useParams } from "react-router";
+import Button from "@components/Button";
+import Modal from "@components/Modal";
 
 const Container = styled.div`
   max-width: 1200px;
@@ -40,7 +46,20 @@ const Logo = styled.img`
   object-fit: cover;
 `;
 
+const AddProductButton = styled(Button)`
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: auto;
+  padding: 1rem 2rem;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+`;
+
 function ShopProfile() {
+  const { id } = useParams();
+  const [isAddingProduct, setIsAddingProduct] = useState(false);
+
   return (
     <div>
       <Banner style={{ backgroundImage: `url(${shop.banner})` }} />
@@ -54,6 +73,25 @@ function ShopProfile() {
           <Tabs />
           <ProductsGrid />
         </ShopInfo>
+
+        <AddProductButton
+          $variety="primary"
+          $size="medium"
+          onClick={() => setIsAddingProduct(true)}
+        >
+          <Plus size={20} />
+          Add Product
+        </AddProductButton>
+
+        {isAddingProduct && (
+          <Modal>
+            <AddProductForm
+              shopId={id!}
+              onSuccess={() => setIsAddingProduct(false)}
+              onCancel={() => setIsAddingProduct(false)}
+            />
+          </Modal>
+        )}
       </Container>
     </div>
   );

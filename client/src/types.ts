@@ -14,8 +14,7 @@ export type CreatedShop = {
   banner?: FileList;
 };
 
-export type Product = {
-  id: string;
+export type createdProduct = {
   name: string;
   price: number;
   // rating: number;
@@ -23,3 +22,5 @@ export type Product = {
   quantity: number;
   image: string;
 };
+
+export type Product = createdProduct & { id: string };
