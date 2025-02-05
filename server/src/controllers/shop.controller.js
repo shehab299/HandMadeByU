@@ -22,10 +22,7 @@ async function updateShop(req, res, next) {
 async function deleteShop(req, res, next) {
     await ShopService.deleteShop(req.user.id, req.params.id);
 
-    res.status(204).json({
-        status: "success",
-        data: null,
-    });
+    res.status(204).end();
 }
 
 async function getShops(req, res, next) {
