@@ -1,13 +1,6 @@
 import { createContext, useContext } from "react";
-import { useUser } from "@features/auth/login/hooks/useUser";
-
-type User = {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  // ... other user fields
-};
+import { useUser } from "@features/user/hooks/useUser";
+import { User } from "@types";
 
 type AuthContextType = {
   user: User | undefined;
@@ -17,7 +10,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-    const { user, isPending } = useUser();
+  const { user, isPending } = useUser();
 
   return (
     <AuthContext.Provider value={{ user, isPending }}>

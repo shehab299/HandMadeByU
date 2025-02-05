@@ -9,10 +9,10 @@ import SpinnerMini from "@components/SpinnerMini";
 import FormTemplate, { FormGroup } from "@components/FormTemplate";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useCreateShop } from "./hooks/useCreateShop";
 import { validation } from "./schema/validation";
 
 import { CreatedShop } from "@types";
+import { useCreateShop } from "./hooks/useCreateShop";
 
 const Container = styled.div`
   min-height: 100vh;

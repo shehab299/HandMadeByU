@@ -1,11 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { Heart, ShoppingCart, User, Menu } from "lucide-react";
+import { Heart, ShoppingCart, Menu } from "lucide-react";
 import { Brand } from "./Brand";
 import { SearchBar } from "./SearchBar";
-import { NavLink } from "./NavLink";
 import { CategoriesMenu } from "./CategoriesMenu";
 import ShopDropdown from "@features/shop/ShopDropdown";
+import { NavLink } from "./NavLink";
+import UserDropdown from "@features/user/UserDropdown";
 
 const Nav = styled.nav`
   background: white;
@@ -61,7 +62,7 @@ export function Navbar() {
 
         <NavActions>
           <NavLink
-            to="/wishlist"
+            to="#"
             icon={<Heart size={24} />}
             badgeCount={wishlistCount}
           />
@@ -70,10 +71,12 @@ export function Navbar() {
             <ShopDropdown />
           </div>
 
-          <NavLink to="/profile" icon={<User size={24} />} />
+          <div style={{ position: "relative" }}>
+            <UserDropdown />
+          </div>
 
           <NavLink
-            to="/cart"
+            to="#"
             icon={<ShoppingCart size={24} />}
             badgeCount={cartItemsCount}
           />

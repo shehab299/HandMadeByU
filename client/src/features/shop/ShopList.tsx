@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useMyShops } from "./hooks/useShops";
 import ShopItem from "./ShopItem";
+import { useMyShops } from "./hooks/useShops";
 
 const List = styled.div`
   max-height: 400px;
