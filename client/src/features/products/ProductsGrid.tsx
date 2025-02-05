@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-import { products } from "./data";
+// import { products } from "./data";
 import ProductCard from "./ProductCard";
+import { useShopProducts } from "./hooks/useShopProducts";
+import { useParams } from "react-router";
 
 const Container = styled.div`
   display: grid;
@@ -11,11 +13,18 @@ const Container = styled.div`
 `;
 
 function ProductsGrid() {
+  const { id } = useParams();
+  const { products, isPending } = useShopProducts({ shopId: id! });
+
+  if (isPending) return;
+
   return (
     <Container>
-      {products.map((product) => (
-        <ProductCard key={product.id} {...product} />
-      ))}
+      {Array.isArray(products) && products.length > 0 ? (
+        products.map((product) => <ProductCard key={product.id} {...product} />)
+      ) : (
+        <p>No products available.</p>
+      )}
     </Container>
   );
 }

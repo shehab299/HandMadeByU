@@ -37,7 +37,7 @@ function ShopDropdown({ $isOpen }: ShopDropdownProps) {
 
       <Divider />
 
-      <Button $size="small" to="/create-shop">
+      <Button $variety="primary" $size="small" to="/create-shop">
         <Plus size={18} />
         Create New Shop
       </Button>

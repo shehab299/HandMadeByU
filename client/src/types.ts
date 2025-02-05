@@ -15,9 +15,11 @@ export type CreatedShop = {
 };
 
 export type Product = {
-  id: number;
+  id: string;
   name: string;
   price: number;
-  rating: number;
+  // rating: number;
+  description: string;
+  quantity: number;
   image: string;
 };

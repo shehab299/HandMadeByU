@@ -131,7 +131,7 @@ function CreateShopForm() {
               placeholder="Describe what your shop offers..."
             />
           </FormGroup>
-          <Button disabled={isSubmitting}>
+          <Button $variety="primary" disabled={isSubmitting}>
             {isPending ? <SpinnerMini /> : "Create Shop"}
           </Button>
         </form>

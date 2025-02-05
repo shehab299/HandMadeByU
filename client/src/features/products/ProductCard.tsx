@@ -1,6 +1,6 @@
 import { Product } from "@types";
 import { Star } from "lucide-react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -46,18 +46,22 @@ const ProductRating = styled.div`
   font-size: 0.875rem;
 `;
 
-function ProductCard({ id, image, name, price, rating }: Product) {
+function ProductCard({ id, image, name, price }: Product) {
   const navigate = useNavigate();
+  const { id: shopId } = useParams();
 
   return (
-    <Container onClick={() => navigate(`/product/${id}`)} key={id}>
+    <Container
+      onClick={() => navigate(`/shop/${shopId}/product/${id}`)}
+      key={id}
+    >
       <ProductImage src={image} alt={name} />
       <ProductInfo>
         <ProductName>{name}</ProductName>
         <ProductPrice>${price}</ProductPrice>
         <ProductRating>
           <Star size={16} fill="#ffd700" />
-          {rating}
+          4
         </ProductRating>
       </ProductInfo>
     </Container>

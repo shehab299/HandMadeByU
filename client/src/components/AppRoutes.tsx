@@ -27,7 +27,7 @@ function AppRoutes() {
           <Route index path="/" element={<Home />} />
           <Route index path="/create-shop" element={<CreateShopForm />} />
           <Route index path="/shop/:id" element={<ShopProfile />} />
-          <Route index path="/product/:id" element={<ProductView />} />
+          <Route index path="/shop/:shopId/product/:productId" element={<ProductView />} />
         </Route>
 
         <Route path="login" element={<Login />} />

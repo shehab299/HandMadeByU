@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { detailedProduct } from "./data";
 import ProductImages from "./ProductImages";
 import ProductInfo from "./ProductInfo";
 
@@ -24,8 +23,8 @@ function ProductView() {
   return (
     <Container>
       <ProductGrid>
-        <ProductImages images={detailedProduct.images} />
-        <ProductInfo product={detailedProduct} />
+        <ProductImages />
+        <ProductInfo />
       </ProductGrid>
     </Container>
   );

@@ -1,11 +1,13 @@
-import styled from "styled-components";
-import { Star } from "lucide-react";
 import { useState } from "react";
+import { useParams } from "react-router";
+import { Star } from "lucide-react";
+import styled from "styled-components";
 
 import { VariantSelector } from "./VariantSelector";
 import { QuantitySelector } from "./QuantitySelector";
 import { Features } from "./Features";
 import ActionButtons from "./ActionButtons";
+import { useProduct } from "./hooks/useProduct";
 
 const Container = styled.div`
   display: flex;
@@ -53,42 +55,44 @@ const Description = styled.p`
   line-height: 1.6;
 `;
 
-interface ProductInfoProps {
-  product: {
-    category: string;
-    name: string;
-    price: number;
-    oldPrice: number;
-    rating: number;
-    reviews: number;
-    description: string;
-    sizes: string[];
-  };
-}
+function ProductInfo() {
+  const { shopId, productId } = useParams<{
+    shopId: string;
+    productId: string;
+  }>();
 
-function ProductInfo({ product }: ProductInfoProps) {
+  const { product, isPending } = useProduct({
+    productId: productId!,
+    shopId: shopId!,
+  });
+
   const [quantity, setQuantity] = useState(1);
+
+  if (isPending) return;
+
+  const { name, price, description } = product!;
 
   return (
     <Container>
       <div>
-        <Category>{product.category}</Category>
-        <Title>{product.name}</Title>
+        {/*TODO: make it dynamic */}
+        <Category>Home Decor</Category>
+        <Title>{name}</Title>
         <Rating>
           <Star size={16} fill="#ffd700" />
-          <span>{product.rating}</span>
-          <span>({product.reviews} reviews)</span>
+          <span>4</span>
+          <span>(1135 reviews)</span>
         </Rating>
       </div>
 
       <Price>
-        ${product.price}
-        <OldPrice>${product.oldPrice}</OldPrice>
+        ${price}
+        <OldPrice>$180</OldPrice>
       </Price>
 
-      <Description>{product.description}</Description>
+      <Description>{description}</Description>
 
-      <VariantSelector sizes={product.sizes} />
+      <VariantSelector sizes={["S", "M", "L"]} />
       <QuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
 
       <ActionButtons />
