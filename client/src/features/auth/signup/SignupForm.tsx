@@ -135,7 +135,7 @@ function SignupForm() {
         </div>
         <div>
           <Button
-            $variety="secondary"
+            $variety="gradient"
             type="submit"
             disabled={isSubmitting || isPending}
           >

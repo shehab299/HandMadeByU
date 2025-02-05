@@ -84,7 +84,7 @@ function LoginForm() {
           />
         </div>
         <div>
-          <Button type="submit" disabled={isSubmitting || isPending}>
+          <Button $variety="gradient" type="submit" disabled={isSubmitting || isPending}>
             {isSubmitting || isPending ? <SpinnerMini /> : "Login"}
           </Button>
           <p>

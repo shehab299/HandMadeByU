@@ -5,39 +5,19 @@ import styled, { css } from "styled-components";
 const StyledButton = styled.button<{
   $variety?: string;
   $size?: string;
+  $position?: string;
   as?: React.ElementType;
 }>`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 
   color: white;
-
-  border: none;
   border-radius: 5px;
+  font-weight: 600;
 
-  padding: 1rem 3rem;
-
-  background-size: 200% auto;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-
-  background-image: linear-gradient(
-    to right,
-    #895cf2 0%,
-    var(--themecolor-secondary) 50%,
-    #895cf2 100%
-  );
-  transition: 0.5s;
-
-  &:hover {
-    background-position: right center;
-  }
-
-  &:disabled {
-    pointer-events: none;
-  }
 
   text-decoration: none;
 
@@ -74,6 +54,43 @@ const StyledButton = styled.button<{
         }
       `;
     }
+
+    if ($variety === "gradient") {
+      return css`
+        background-size: 200% auto;
+
+        background-image: linear-gradient(
+          to right,
+          #895cf2 0%,
+          var(--themecolor-secondary) 50%,
+          #895cf2 100%
+        );
+        transition: 0.5s;
+
+        &:hover {
+          background-position: right center;
+        }
+
+        &:disabled {
+          pointer-events: none;
+        }
+      `;
+    }
+  }}
+
+  ${({ $position }) => {
+    if ($position === "floating") {
+      return css`
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 100;
+
+        width: auto;
+
+        padding: 1rem 2rem;
+      `;
+    }
   }}
 
   ${({ $size }) => {
@@ -81,7 +98,6 @@ const StyledButton = styled.button<{
       return css`
         padding: 1rem;
         border-radius: 8px;
-        font-weight: 600;
         padding: 0.75rem 1.5rem;
         font-size: 0.875rem;
       `;
@@ -96,7 +112,7 @@ const StyledButton = styled.button<{
 
     if ($size === "large") {
       return css`
-        padding: 1.5rem 3rem;
+        padding: 1rem 3rem;
         font-size: 1.25rem;
       `;
     }
@@ -105,22 +121,41 @@ const StyledButton = styled.button<{
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
-  $variety?: "primary" | "secondary";
+  $variety?: "primary" | "secondary" | "gradient";
   $size?: "small" | "medium" | "large";
+  $position?: "floating" | "normal";
   to?: string;
 };
 
-function Button({ $variety, $size = "medium", to, children, ...props }: Props) {
+function Button({
+  $variety = "primary",
+  $size = "medium",
+  $position = "normal",
+  to,
+  children,
+  ...props
+}: Props) {
   if (to) {
     return (
-      <StyledButton $size={$size} $variety={$variety} as={Link} to={to}>
+      <StyledButton
+        $position={$position}
+        $size={$size}
+        $variety={$variety}
+        as={Link}
+        to={to}
+      >
         {children}
       </StyledButton>
     );
   }
 
   return (
-    <StyledButton $size={$size} $variety={$variety} {...props}>
+    <StyledButton
+      $position={$position}
+      $size={$size}
+      $variety={$variety}
+      {...props}
+    >
       {children}
     </StyledButton>
   );

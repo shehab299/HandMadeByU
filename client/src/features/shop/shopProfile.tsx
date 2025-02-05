@@ -46,16 +46,6 @@ const Logo = styled.img`
   object-fit: cover;
 `;
 
-const AddProductButton = styled(Button)`
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: auto;
-  padding: 1rem 2rem;
-  z-index: 100;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-`;
-
 function ShopProfile() {
   const { id } = useParams();
   const [isAddingProduct, setIsAddingProduct] = useState(false);
@@ -74,14 +64,13 @@ function ShopProfile() {
           <ProductsGrid />
         </ShopInfo>
 
-        <AddProductButton
-          $variety="primary"
-          $size="medium"
+        <Button
+          $position="floating"
           onClick={() => setIsAddingProduct(true)}
         >
           <Plus size={20} />
           Add Product
-        </AddProductButton>
+        </Button>
 
         {isAddingProduct && (
           <Modal>
