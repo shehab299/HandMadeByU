@@ -35,10 +35,7 @@ async function updateCartItem(req, res, next) {
     const cartItem = await CartService.updateCartItem(userId, itemId, quantity);
 
     if(!cartItem){
-        res.status(204).json({
-            status: 'success',
-            data: null,
-        });
+        res.status(204).end();
     };
 
     res.status(200).json({
@@ -52,10 +49,7 @@ async function clearCart(req, res, next) {
     const userId = req.user.id;
     await CartService.clearCart(userId);
 
-    res.status(204).json({
-        status: 'success',
-        data: null,
-    });
+    res.status(204).end();
 }
 
 module.exports = {

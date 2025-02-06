@@ -66,10 +66,7 @@ async function deleteProduct(req, res, next) {
     
     await ProductService.deleteProduct(userId, shopId, productId);
 
-    res.status(204).json({
-        status: 'success',
-        data: null,
-    });
+    res.status(204).end();
 }
 
 module.exports = {
