@@ -119,16 +119,25 @@ function Window({ children, name }: WindowProps) {
 interface OpenProps {
   children: ReactElement;
   opens: string;
+  onClick?: () => {};
 }
 
-function Open({ children, opens }: OpenProps) {
+function Open({ children, opens, onClick }: OpenProps) {
   const modalContext = useContext(ModalContext);
 
   if (!modalContext) return null;
 
   const { open } = modalContext;
-  return cloneElement(children, { onClick: () => open(opens) });
-}
 
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    open(opens);
+    onClick?.();
+  };
+
+  return cloneElement(children, {
+    onClick: handleClick,
+  });
+}
 Modal.Window = Window;
 Modal.Open = Open;
