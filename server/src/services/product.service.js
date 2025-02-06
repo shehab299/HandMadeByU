@@ -64,6 +64,10 @@ class ProductService {
         const product = await Product.create({ ...body, shopId });
         return product;
     }
+
+    static async getProductsFromAllShops(){
+        return await Product.findAll();
+    }
 }
 
 module.exports = ProductService;

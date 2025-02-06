@@ -69,12 +69,23 @@ async function deleteProduct(req, res, next) {
     res.status(204).end();
 }
 
+async function getProductsFromAllShops(req, res, next){
+
+    const products = await ProductService.getProductsFromAllShops();
+
+    res.status(200).json({
+        status: "success",
+        data: { products }
+    })
+}
+
 module.exports = {
     createProduct: asyncDec(createProduct),
     getProducts: asyncDec(getProducts),
     getProduct: asyncDec(getProduct),
     updateProduct: asyncDec(updateProduct),
     deleteProduct: asyncDec(deleteProduct),
+    getProductsFromAllShops: asyncDec(getProductsFromAllShops)
 }
 
 

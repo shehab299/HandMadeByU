@@ -18,16 +18,10 @@ const ShopSchema = {
     allowNull: false
   },
   banner:{
-    type: DataTypes.STRING,
-    validate:{
-      isUrl: true
-    }
+    type: DataTypes.STRING
   },
   logo:{
-    type: DataTypes.STRING,
-    validate:{
-      isUrl: true
-    }
+    type: DataTypes.STRING
   }
 }
 
